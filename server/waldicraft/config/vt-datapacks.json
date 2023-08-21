@@ -1,0 +1,37 @@
+{
+    "type": "datapacks",
+    "version": "1.20.1",
+    "packs": {
+        "survival": [
+            "afk display",
+            "armor status",
+            "couldron concrete",
+            "custom nether portals",
+            "graves",
+            "multiplayer sleep",
+            "nether portal coords",
+            "real time clock",
+            "track raw statistics",
+            "track statistics"
+        ],
+        "items": [
+            "armored elytra",
+            "player head drops"
+        ],
+        "mobs": [
+            "anti enderman grief",
+            "double shulker shells",
+            "dragon drops",
+            "larger phantoms",
+            "more mob heads",
+            "villager death messages"
+        ],
+        "hermitcraft": [
+            "tag"
+        ],
+        "experimental": [
+            "chunk loaders",
+            "confetti creepers"
+        ]
+    }
+}

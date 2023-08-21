@@ -1,0 +1,19 @@
+{
+    "type": "craftingtweaks",
+    "version": "1.20.1",
+    "packs": {
+        "quality of life": [
+            "rotten flesh to leather",
+            "straight to shapeless"
+        ],
+        "craftables": [
+            "craftable blackstone",
+            "craftable horse armor"
+        ],
+        "unpackables": [
+            "unpackable nether wart",
+            "unpackable ice"
+        ]
+    },
+    "result": "ok"
+}

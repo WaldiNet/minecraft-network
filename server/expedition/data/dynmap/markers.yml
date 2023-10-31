@@ -1,0 +1,429 @@
+%YAML 1.1
+---
+isSafe: true
+icons: {
+    }
+sets:
+    Farms:
+        hide: false
+        circles: {
+            }
+        deficon: factory
+        areas: {
+            }
+        label: Farms
+        markers:
+            marker_1:
+                world: expedition
+                markup: false
+                x: -10.504139436933047
+                icon: factory
+                y: 86.00519104995622
+                z: -564.2697382443416
+                label: Iron-Farm
+        lines: {
+            }
+        layerprio: 30
+        showlabels: false
+    Villages:
+        hide: false
+        circles: {
+            }
+        deficon: house
+        areas: {
+            }
+        label: Villages
+        markers:
+            marker_5:
+                world: expedition
+                markup: false
+                x: 1497.7490524310856
+                icon: house
+                y: 77.0
+                z: 91.639379958536
+                label: Cohovofi
+            marker_6:
+                world: expedition
+                markup: false
+                x: 261.39663980906187
+                icon: house
+                y: 65.0
+                z: -1159.0128926519162
+                label: Cajuqore
+            marker_7:
+                world: expedition
+                markup: false
+                x: 632.7072433350247
+                icon: house
+                y: 100.0
+                z: 1277.6030087531735
+                label: Hofejuha
+            marker_8:
+                world: expedition
+                markup: false
+                x: -4368.004969357431
+                icon: house
+                y: 112.0
+                z: 3438.4687183884353
+                label: Xefixisu
+            marker_9:
+                world: expedition
+                markup: false
+                x: 1415.5
+                icon: house
+                y: 64.0
+                z: 2125.5
+                label: Kasirumu
+            marker_12:
+                world: expedition
+                markup: false
+                x: -398.37914702424086
+                icon: house
+                y: 69.0
+                z: -277.76249998807907
+                label: Digedayu
+            marker_13:
+                world: expedition
+                markup: false
+                x: 1620.4012088704892
+                icon: house
+                y: 64.0
+                z: 2401.6827785525643
+                label: Kafahale
+            marker_10:
+                world: expedition
+                markup: false
+                x: -987.1889162552253
+                icon: house
+                y: 69.0
+                z: 431.23750001192093
+                label: Guwixewe
+            marker_11:
+                world: expedition
+                markup: false
+                x: -739.0119315050222
+                icon: house
+                y: 73.0
+                z: 455.4944854758559
+                label: Mokesuqi
+            marker_1:
+                world: expedition
+                markup: false
+                x: 701.5446293623941
+                icon: house
+                y: 65.0
+                z: 439.76249998807907
+                label: Kolatibe
+            marker_2:
+                world: expedition
+                markup: false
+                x: 1088.5362073272797
+                icon: house
+                y: 83.0
+                z: 1006.7624999880791
+                label: Cajeluxi
+            marker_3:
+                world: expedition
+                markup: false
+                x: 874.3606500706136
+                icon: house
+                y: 65.0
+                z: 927.431791468382
+                label: Lomeneto
+            marker_4:
+                world: expedition
+                markup: false
+                x: 1274.9708449967427
+                icon: house
+                y: 65.0
+                z: 512.4203300398913
+                label: Dadedise
+            marker_18:
+                world: expedition
+                markup: false
+                x: 3399.915894183448
+                icon: house
+                y: 66.0
+                z: 1422.3746660132533
+                label: Kovomiya
+            marker_19:
+                world: expedition
+                markup: false
+                x: 3532.3976840515365
+                icon: house
+                y: 64.0
+                z: 2272.777115003766
+                label: Natommona
+            marker_16:
+                world: expedition
+                markup: false
+                x: 1945.9919528172995
+                icon: house
+                y: 69.0
+                z: 572.4729577942513
+                label: Mukaligi
+            marker_17:
+                world: expedition
+                markup: false
+                x: 3033.118919153286
+                icon: house
+                y: 68.0
+                z: 1288.0357551746627
+                label: Qudizawu
+            marker_14:
+                world: expedition
+                markup: false
+                x: 1732.5609731661998
+                icon: house
+                y: 75.0
+                z: 3336.670393704042
+                label: Xonezeso
+            marker_15:
+                world: expedition
+                markup: false
+                x: 2101.237500011921
+                icon: house
+                y: 65.0
+                z: -2.228145489887897
+                label: Sisolaci
+            marker_23:
+                world: expedition
+                markup: false
+                x: 4752.597746224708
+                icon: house
+                y: 92.0
+                z: 5209.031946562622
+                label: Vesutato
+            marker_24:
+                world: expedition
+                markup: false
+                x: 5051.728425841084
+                icon: house
+                y: 67.0
+                z: 5550.007853249192
+                label: Tiraguhi
+            marker_21:
+                world: expedition
+                markup: false
+                x: 3591.6589836416665
+                icon: house
+                y: 67.0
+                z: 2679.9190264235585
+                label: Duwuwodu
+            marker_22:
+                world: expedition
+                markup: false
+                x: 4969.5391516641475
+                icon: house
+                y: 76.0
+                z: 5174.235300590108
+                label: Vayeguxu
+            marker_20:
+                world: expedition
+                markup: false
+                x: 3477.4805189275257
+                icon: house
+                y: 69.5
+                z: 2585.749616804866
+                label: Voteboga
+            marker_25:
+                world: expedition
+                markup: false
+                x: 7120.202950474044
+                icon: house
+                y: 72.0
+                z: 5262.298697658763
+                label: Popaxesi
+            marker_26:
+                world: expedition
+                markup: false
+                x: 6925.5189836772715
+                icon: house
+                y: 80.0
+                z: 5108.622389536939
+                label: Lafaqoye
+        lines: {
+            }
+        layerprio: 20
+        showlabels: false
+    Tower:
+        hide: false
+        circles: {
+            }
+        deficon: tower
+        areas: {
+            }
+        label: Tower
+        markers:
+            marker_1:
+                world: expedition
+                markup: false
+                x: 201.23750001192093
+                icon: tower
+                y: 68.0
+                z: -193.59099354536676
+                label: Hezefone
+            marker_2:
+                world: expedition
+                markup: false
+                x: 36.44126546623576
+                icon: tower
+                y: 120.0
+                z: -1578.762499988079
+                label: Nukekesa
+            marker_3:
+                world: expedition
+                markup: false
+                x: 196.76249998807907
+                icon: tower
+                y: 71.0
+                z: 1114.5359195040726
+                label: Cowuhoho
+            marker_4:
+                world: expedition
+                markup: false
+                x: -597.0288034377262
+                icon: tower
+                y: 71.125
+                z: -725.1750000119209
+                label: Tavamafe
+            marker_5:
+                world: expedition
+                markup: false
+                x: 139.26032736174227
+                icon: tower
+                y: 67.0
+                z: -708.400582813516
+                label: Qahokolu
+            marker_6:
+                world: expedition
+                markup: false
+                x: 996.7592637990324
+                icon: tower
+                y: 64.0
+                z: 1018.3846526310908
+                label: Vutaceso
+            marker_7:
+                world: expedition
+                markup: false
+                x: 2053.1646112405733
+                icon: tower
+                y: 87.0
+                z: 101.31668341848308
+                label: Tividora
+            marker_8:
+                world: expedition
+                markup: false
+                x: 4556.719784757457
+                icon: tower
+                y: 150.0
+                z: 3590.5268792955762
+                label: Moatiki
+            marker_9:
+                world: expedition
+                markup: false
+                x: 5892.222547125942
+                icon: tower
+                y: 79.0
+                z: 6043.725101758017
+                label: Mehiparo
+        lines: {
+            }
+        layerprio: 10
+        showlabels: false
+    markers:
+        hide: true
+        circles: {
+            }
+        deficon: pin
+        areas: {
+            }
+        label: Markers
+        markers:
+            marker_1:
+                world: expedition
+                markup: false
+                x: 4240.745745326023
+                icon: pin
+                y: 63.19095912373563
+                z: -4526.566050131896
+                label: Temples
+        lines: {
+            }
+        layerprio: 999
+    Portals:
+        hide: false
+        circles: {
+            }
+        deficon: portal
+        areas: {
+            }
+        label: Portals
+        markers:
+            marker_1:
+                world: expedition
+                markup: false
+                x: 1572.6696929283803
+                icon: portal
+                y: -8.5
+                z: -1328.070800208331
+                label: Portal
+            marker_2:
+                world: DIM-1
+                markup: false
+                x: 8.555797255057259
+                icon: portal
+                y: 71.0
+                z: -50.23077016207445
+                label: Home
+        lines: {
+            }
+        layerprio: 50
+        showlabels: false
+    Temples:
+        hide: false
+        circles: {
+            }
+        deficon: temple
+        areas: {
+            }
+        label: Temples
+        markers:
+            marker_1:
+                world: expedition
+                markup: false
+                x: 64.3545798072132
+                icon: temple
+                y: 82.0
+                z: -654.7795476444852
+                label: Ice-Temple
+            marker_2:
+                world: expedition
+                markup: false
+                x: 1743.3156845795027
+                icon: temple
+                y: 62.073264324665075
+                z: 2800.0917833110875
+                label: Ocean-Monument
+            marker_3:
+                world: expedition
+                markup: false
+                x: 3568.6402159044505
+                icon: temple
+                y: 65.0
+                z: 1787.7209342034798
+                label: Djungle-Temple
+            marker_4:
+                world: expedition
+                markup: false
+                x: 3648.527788172931
+                icon: temple
+                y: 65.0
+                z: 2688.676580671702
+                label: Djungle-Temple2
+        lines: {
+            }
+        layerprio: 40
+        showlabels: false
+playersets: {
+    }

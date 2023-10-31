@@ -2,6 +2,8 @@
 !.gitignore
 
 !dynmap
+!dynmap/templates
+!dynmap/templates/normal*.txt
 !dynmap/configuration.txt
 !dynmap/fabricworlds.yml
 !dynmap/markers.yml

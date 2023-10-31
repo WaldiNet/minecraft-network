@@ -1,0 +1,12 @@
+%YAML 1.1
+---
+worlds:
+-   sealevel: 63
+    nether: false
+    miny: -64
+    name: testing
+    the_end: false
+    title: Redstone
+    height: 384
+useSaveFolderAsName: true
+maxWorldHeight: 320

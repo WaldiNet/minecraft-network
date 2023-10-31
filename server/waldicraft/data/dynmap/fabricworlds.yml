@@ -1,0 +1,33 @@
+%YAML 1.1
+---
+worlds:
+-   sealevel: 63
+    nether: false
+    miny: -64
+    name: waldicraft
+    the_end: false
+    title: WaldiCraft
+    height: 384
+-   sealevel: 63
+    nether: true
+    miny: 0
+    name: DIM-1
+    the_end: false
+    title: Nether
+    height: 256
+-   sealevel: 63
+    nether: false
+    miny: 0
+    name: DIM1
+    the_end: true
+    title: The End
+    height: 384
+-   sealevel: 63
+    nether: false
+    miny: 0
+    name: nullscape_end_island
+    the_end: false
+    title: End Islands
+    height: 320
+useSaveFolderAsName: true
+maxWorldHeight: 320

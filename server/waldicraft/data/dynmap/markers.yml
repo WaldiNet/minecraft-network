@@ -1,0 +1,1171 @@
+%YAML 1.1
+---
+isSafe: true
+icons: {
+    }
+sets:
+    Farms:
+        hide: false
+        circles: {
+            }
+        deficon: factory
+        areas: {
+            }
+        label: Farms
+        markers:
+            marker_1:
+                world: waldicraft
+                markup: false
+                x: -1171.5
+                icon: factory
+                y: 145.0
+                z: 3166.5
+                label: Creeper-Farm
+            marker_2:
+                world: DIM1
+                markup: false
+                x: 494.460169658293
+                icon: factory
+                y: 2.875
+                z: 194.9395691973924
+                label: Enderman-Farm
+            marker_3:
+                world: waldicraft
+                markup: false
+                x: 260.6467416617953
+                icon: factory
+                y: 56.5
+                z: 92.75384017550381
+                label: Farm-Collection
+        lines: {
+            }
+        layerprio: 30
+        showlabels: false
+    Villages:
+        hide: false
+        circles: {
+            }
+        deficon: house
+        areas: {
+            }
+        label: Villages
+        markers:
+            marker_10:
+                world: waldicraft
+                markup: false
+                x: 763.5126390450318
+                icon: house
+                y: 64.0
+                z: -7402.580265063181
+                label: Rusikisi
+            marker_11:
+                world: waldicraft
+                markup: false
+                x: -2893.448494021389
+                icon: house
+                y: 97.0
+                z: 2397.5220659880797
+                label: Xusapuga
+            marker_1:
+                world: waldicraft
+                markup: false
+                x: -248.05007702678256
+                icon: house
+                y: 65.0
+                z: 1892.300000011921
+                label: Kirchendorf
+            marker_2:
+                world: waldicraft
+                markup: false
+                x: -264.7942787202588
+                icon: house
+                y: 68.0
+                z: 2105.6840007574574
+                label: Pferdedorf
+            marker_3:
+                world: waldicraft
+                markup: false
+                x: 2905.304373419292
+                icon: house
+                y: 64.0
+                z: -1516.5907139455328
+                label: Fischerdorf
+            marker_4:
+                world: waldicraft
+                markup: false
+                x: 3660.606010732932
+                icon: house
+                y: 63.9375
+                z: -391.6685685741549
+                label: Terakotter-Dorf
+            marker_5:
+                world: waldicraft
+                markup: false
+                x: 3216.7993283718833
+                icon: house
+                y: 63.0
+                z: 1216.3923088490026
+                label: Raid Dorf
+            marker_6:
+                world: waldicraft
+                markup: false
+                x: -883.486501202341
+                icon: house
+                y: 97.0
+                z: -6332.237500011921
+                label: Ost-Berlin
+            marker_7:
+                world: waldicraft
+                markup: false
+                x: -1462.762499988079
+                icon: house
+                y: 77.0
+                z: -6369.380826834443
+                label: West-Berlin
+            marker_8:
+                world: waldicraft
+                markup: false
+                x: 477.51940854881565
+                icon: house
+                y: 92.625
+                z: -5475.5764938877055
+                label: Mushroom-Island
+            marker_9:
+                world: waldicraft
+                markup: false
+                x: 1086.783705241554
+                icon: house
+                y: 64.0
+                z: -7628.130065925693
+                label: CoralTown
+        lines: {
+            }
+        layerprio: 20
+        showlabels: false
+    Tower:
+        hide: false
+        circles: {
+            }
+        deficon: tower
+        areas: {
+            }
+        label: Tower
+        markers:
+            marker_60:
+                world: waldicraft
+                markup: false
+                x: -290.69999998807907
+                icon: tower
+                y: 133.0
+                z: -6578.626413121475
+                label: Kagukigi
+            marker_12:
+                world: waldicraft
+                markup: false
+                x: -1570.5
+                icon: tower
+                y: 112.0
+                z: 2962.5
+                label: Drakmeeder
+            marker_56:
+                world: waldicraft
+                markup: false
+                x: 3618.5
+                icon: tower
+                y: 114.0
+                z: 481.5
+                label: Madmiarc I
+            marker_13:
+                world: waldicraft
+                markup: false
+                x: -1490.5
+                icon: tower
+                y: 116.0
+                z: 2770.5
+                label: Brezerer
+            marker_57:
+                world: waldicraft
+                markup: false
+                x: -1500.5
+                icon: tower
+                y: 119.0
+                z: 2094.5
+                label: Marslamarmur
+            marker_10:
+                world: waldicraft
+                markup: false
+                x: -1715.5
+                icon: tower
+                y: 112.0
+                z: 2371.5
+                label: Crycloer
+            marker_54:
+                world: waldicraft
+                markup: false
+                x: -876.5
+                icon: tower
+                y: 112.0
+                z: 478.5
+                label: Creozoired
+            marker_11:
+                world: waldicraft
+                markup: false
+                x: -1778.5
+                icon: tower
+                y: 125.0
+                z: 3070.5
+                label: Zedmaraces
+            marker_55:
+                world: waldicraft
+                markup: false
+                x: 802.5
+                icon: tower
+                y: 119.0
+                z: 2097.5
+                label: Lukloricred
+            marker_52:
+                world: waldicraft
+                markup: false
+                x: -692.4071111694715
+                icon: tower
+                y: 64.0
+                z: -5626.237500011921
+                label: Tucinate
+            marker_53:
+                world: waldicraft
+                markup: false
+                x: -1756.76040492162
+                icon: tower
+                y: 114.0
+                z: -5985.521780222753
+                label: Girihahu
+            marker_50:
+                world: waldicraft
+                markup: false
+                x: -1164.762499988079
+                icon: tower
+                y: 198.0
+                z: -6033.539984854498
+                label: Zutofiru
+            marker_51:
+                world: waldicraft
+                markup: false
+                x: -1154.797598497353
+                icon: tower
+                y: 185.0
+                z: -6348.40193832252
+                label: Rufapebe
+            marker_18:
+                world: waldicraft
+                markup: false
+                x: -642.5
+                icon: tower
+                y: 118.0
+                z: 430.5
+                label: Raurakmur
+            marker_19:
+                world: waldicraft
+                markup: false
+                x: 1485.5
+                icon: tower
+                y: 120.0
+                z: 1294.5
+                label: Reimirier
+            marker_16:
+                world: waldicraft
+                markup: false
+                x: -1186.5
+                icon: tower
+                y: 134.0
+                z: 802.5
+                label: Creocrad
+            marker_17:
+                world: waldicraft
+                markup: false
+                x: -878.5
+                icon: tower
+                y: 112.0
+                z: 478.5
+                label: Creozoired
+            marker_58:
+                world: waldicraft
+                markup: false
+                x: -784.5
+                icon: tower
+                y: 159.0
+                z: 2594.5
+                label: Rayirer
+            marker_14:
+                world: waldicraft
+                markup: false
+                x: -1502.5
+                icon: tower
+                y: 119.0
+                z: 2094.5
+                label: Marslamarmur
+            marker_15:
+                world: waldicraft
+                markup: false
+                x: -1566.5
+                icon: tower
+                y: 116.0
+                z: 1314.5
+                label: Krslamarmur
+            marker_59:
+                world: waldicraft
+                markup: false
+                x: 1486.5
+                icon: tower
+                y: 120.0
+                z: 1293.5
+                label: Reimirier
+            marker_70:
+                world: waldicraft
+                markup: false
+                x: -2050.0139485051855
+                icon: tower
+                y: 123.0
+                z: 2101.4768965617823
+                label: Soyenihe
+            marker_71:
+                world: waldicraft
+                markup: false
+                x: -2538.5149845871724
+                icon: tower
+                y: 66.0
+                z: 2651.4572231208203
+                label: Retakoge
+            marker_23:
+                world: waldicraft
+                markup: false
+                x: 1982.500976942505
+                icon: tower
+                y: 124.1875
+                z: -476.76249998807907
+                label: Camirier
+            marker_67:
+                world: waldicraft
+                markup: false
+                x: 673.2496187381679
+                icon: tower
+                y: 121.0
+                z: 2718.1418034117546
+                label: Forohiro
+            marker_24:
+                world: waldicraft
+                markup: false
+                x: 2786.1865039505187
+                icon: tower
+                y: 86.0
+                z: -914.9010697721944
+                label: Zurirzur
+            marker_68:
+                world: waldicraft
+                markup: false
+                x: 1005.3475814452397
+                icon: tower
+                y: 118.0
+                z: 2430.5846956328373
+                label: Cidosife
+            marker_21:
+                world: waldicraft
+                markup: false
+                x: 1651.7283216205228
+                icon: tower
+                y: 120.0
+                z: -770.2450762027473
+                label: Mjolarkzur
+            marker_65:
+                world: waldicraft
+                markup: false
+                x: -336.10632143167965
+                icon: tower
+                y: 118.0
+                z: -8065.812827244428
+                label: Locidoqe
+            marker_22:
+                world: waldicraft
+                markup: false
+                x: 1709.2294558711096
+                icon: tower
+                y: 119.0
+                z: -1148.300000011921
+                label: Krslamarcred
+            marker_66:
+                world: waldicraft
+                markup: false
+                x: 116.30182758765459
+                icon: tower
+                y: 127.0
+                z: -8238.393847061208
+                label: Nisifuca
+            marker_63:
+                world: waldicraft
+                markup: false
+                x: -1788.4318882686757
+                icon: tower
+                y: 115.0
+                z: 1409.9094874912255
+                label: Yebowefi
+            marker_20:
+                world: waldicraft
+                markup: false
+                x: 1651.237500011921
+                icon: tower
+                y: 119.1875
+                z: -513.5597319313024
+                label: Rayarkd I
+            marker_64:
+                world: waldicraft
+                markup: false
+                x: -957.7994557900696
+                icon: tower
+                y: 113.0
+                z: -7232.220864041952
+                label: Tobubofa
+            marker_61:
+                world: waldicraft
+                markup: false
+                x: 1394.41681177126
+                icon: tower
+                y: 124.0
+                z: -7358.24232871818
+                label: Nidomahu
+            marker_62:
+                world: waldicraft
+                markup: false
+                x: -882.0821524430183
+                icon: tower
+                y: 112.125
+                z: 669.8249999880791
+                label: Hateruju
+            marker_29:
+                world: waldicraft
+                markup: false
+                x: 3569.762499988079
+                icon: tower
+                y: 117.1875
+                z: 1010.4824794632023
+                label: Madzercred
+            marker_27:
+                world: waldicraft
+                markup: false
+                x: 3633.300000011921
+                icon: tower
+                y: 118.0
+                z: -514.8105265001522
+                label: Drakredcred
+            marker_28:
+                world: waldicraft
+                markup: false
+                x: 3619.237500011921
+                icon: tower
+                y: 114.1875
+                z: 482.476311096949
+                label: Madmiarc I
+            marker_25:
+                world: waldicraft
+                markup: false
+                x: 3278.4850082229163
+                icon: tower
+                y: 83.0
+                z: -830.7311210839426
+                label: Crymaracmed
+            marker_69:
+                world: waldicraft
+                markup: false
+                x: 1147.9556917805849
+                icon: tower
+                y: 124.0
+                z: 2670.970290637164
+                label: Boruqoqa
+            marker_26:
+                world: waldicraft
+                markup: false
+                x: 3375.373857569045
+                icon: tower
+                y: 116.0
+                z: -572.4290922916786
+                label: Mermimed
+            marker_5:
+                world: waldicraft
+                markup: false
+                x: -270.5
+                icon: tower
+                y: 117.0
+                z: 3570.5
+                label: Azurairmur
+            marker_6:
+                world: waldicraft
+                markup: false
+                x: -622.5
+                icon: tower
+                y: 115.0
+                z: 3550.5
+                label: Crumures
+            marker_7:
+                world: waldicraft
+                markup: false
+                x: -755.5
+                icon: tower
+                y: 80.0
+                z: 3667.5
+                label: Crucramur
+            marker_8:
+                world: waldicraft
+                markup: false
+                x: -1198.5
+                icon: tower
+                y: 81.0
+                z: 3294.5
+                label: Brecraarc
+            marker_9:
+                world: waldicraft
+                markup: false
+                x: -1565.5
+                icon: tower
+                y: 120.0
+                z: 2445.5
+                label: Marcramur
+            marker_34:
+                world: waldicraft
+                markup: false
+                x: 3374.4738943482716
+                icon: tower
+                y: 122.1875
+                z: 991.249804196869
+                label: Mrokmiriark I
+            marker_35:
+                world: waldicraft
+                markup: false
+                x: 3619.3423980360462
+                icon: tower
+                y: 114.0
+                z: 482.4824575564049
+                label: Madmiarc I
+            marker_32:
+                world: waldicraft
+                markup: false
+                x: 2971.4608789244385
+                icon: tower
+                y: 71.0
+                z: 1290.616659819436
+                label: Jarmiure
+            marker_33:
+                world: waldicraft
+                markup: false
+                x: 1955.237500011921
+                icon: tower
+                y: 118.1875
+                z: 1282.536725173989
+                label: Merarcure
+            marker_1:
+                world: waldicraft
+                markup: false
+                x: -146.5
+                icon: tower
+                y: 117.0
+                z: 1426.5
+                label: Creozoirder
+            marker_30:
+                world: waldicraft
+                markup: false
+                x: 3373.620975390684
+                icon: tower
+                y: 122.0
+                z: 990.5081174893128
+                label: Merurakmed
+            marker_74:
+                world: waldicraft
+                markup: false
+                x: 350.4634591470119
+                icon: tower
+                y: 117.0
+                z: 3411.6425614059585
+                label: Vusafako
+            marker_2:
+                world: waldicraft
+                markup: false
+                x: 333.5
+                icon: tower
+                y: 150.0
+                z: 2446.5
+                label: Crucracred
+            marker_31:
+                world: waldicraft
+                markup: false
+                x: 2978.7462095076626
+                icon: tower
+                y: 124.0
+                z: 1055.3190809892778
+                label: Lukclod
+            marker_75:
+                world: waldicraft
+                markup: false
+                x: 1459.6495953486008
+                icon: tower
+                y: 115.0
+                z: -1261.541093351905
+                label: Weziqaru
+            marker_3:
+                world: waldicraft
+                markup: false
+                x: 177.5
+                icon: tower
+                y: 143.0
+                z: 2626.5
+                label: Mrokzerure
+            marker_72:
+                world: waldicraft
+                markup: false
+                x: -2404.627667262218
+                icon: tower
+                y: 79.0
+                z: 1947.547292146979
+                label: Yixasahe
+            marker_4:
+                world: waldicraft
+                markup: false
+                x: 365.5
+                icon: tower
+                y: 115.0
+                z: 2770.5
+                label: Zorkmeecred
+            marker_73:
+                world: waldicraft
+                markup: false
+                x: 2258.4924800016247
+                icon: tower
+                y: 113.0
+                z: 2413.762499988079
+                label: Nakabuqa
+            marker_38:
+                world: waldicraft
+                markup: false
+                x: 2130.5350652033317
+                icon: tower
+                y: 113.1875
+                z: 749.7608464349164
+                label: Madzoirder
+            marker_39:
+                world: waldicraft
+                markup: false
+                x: -497.5919323190291
+                icon: tower
+                y: 137.1875
+                z: 1331.237500011921
+                label: Azakmaraces
+            marker_36:
+                world: waldicraft
+                markup: false
+                x: 3217.762499988079
+                icon: tower
+                y: 119.1875
+                z: 418.438634826216
+                label: Zedarctron
+            marker_37:
+                world: waldicraft
+                markup: false
+                x: 2063.237500011921
+                icon: tower
+                y: 116.1875
+                z: 962.441119441125
+                label: Mermier
+            marker_45:
+                world: waldicraft
+                markup: false
+                x: -209.53970250675962
+                icon: tower
+                y: 79.1875
+                z: 4333.762499988079
+                label: Mrokirder
+            marker_46:
+                world: waldicraft
+                markup: false
+                x: -514.5829352785299
+                icon: tower
+                y: 113.0
+                z: 2701.5046434013116
+                label: Baumfarm
+            marker_43:
+                world: waldicraft
+                markup: false
+                x: -784.7624999880791
+                icon: tower
+                y: 159.1875
+                z: 2594.5633799534853
+                label: Rayirer
+            marker_44:
+                world: waldicraft
+                markup: false
+                x: -1244.5280429030645
+                icon: tower
+                y: 86.1875
+                z: 3884.7295156084683
+                label: Madarcd
+            marker_41:
+                world: waldicraft
+                markup: false
+                x: -800.7624999880791
+                icon: tower
+                y: 112.1875
+                z: 2114.4718258675543
+                label: Rayzeres
+            marker_42:
+                world: waldicraft
+                markup: false
+                x: -609.580110920451
+                icon: tower
+                y: 129.1875
+                z: 2257.760545826025
+                label: Creozermed
+            marker_40:
+                world: waldicraft
+                markup: false
+                x: -624.7624999880791
+                icon: tower
+                y: 112.1875
+                z: 1774.4229505642506
+                label: Cryirzur
+            marker_49:
+                world: waldicraft
+                markup: false
+                x: -514.2407784760156
+                icon: tower
+                y: 115.0
+                z: -5949.548022616354
+                label: Tudozova
+            marker_47:
+                world: waldicraft
+                markup: false
+                x: 802.5290582006315
+                icon: tower
+                y: 119.1875
+                z: 2097.762499988079
+                label: Lukloricred
+            marker_48:
+                world: waldicraft
+                markup: false
+                x: 1171.237500011921
+                icon: tower
+                y: 115.1875
+                z: 2130.536115396162
+                label: Zedmiried
+        lines: {
+            }
+        layerprio: 10
+        showlabels: false
+    markers:
+        hide: true
+        circles: {
+            }
+        deficon: pin
+        areas:
+            area_1:
+                fillColor: 16711680
+                world: waldicraft
+                markup: false
+                ytop: 64.0
+                fillOpacity: 0.35
+                x:
+                - 939.0
+                - 678.0
+                - 664.0
+                - -656.0
+                - -672.0
+                - -912.0
+                - -912.0
+                - -1455.0
+                - -1472.0
+                - -1631.0
+                - -1664.0
+                - -1888.0
+                - -1983.0
+                - -1983.0
+                - -2079.0
+                - -2112.0
+                - -2112.0
+                - -2208.0
+                - -2208.0
+                - -2096.0
+                - -1856.0
+                - -1824.0
+                - -1824.0
+                - -2080.0
+                - -2096.0
+                - -2160.0
+                - -2143.0
+                - -1936.0
+                - -1936.0
+                - -1792.0
+                - -1774.0
+                - -1743.0
+                - -1727.0
+                - -1392.0
+                - -1392.0
+                - -1120.0
+                - -847.0
+                - -672.0
+                - -638.0
+                - -558.0
+                - -351.0
+                - -318.0
+                - 208.0
+                - 208.0
+                - 352.0
+                - 352.0
+                - 1071.0
+                - 1071.0
+                - 881.0
+                - 866.0
+                - 898.0
+                - 1217.0
+                - 1408.0
+                - 2192.0
+                - 2115.0
+                - 2496.0
+                - 3387.0
+                - 3347.0
+                - 4173.0
+                - 4127.0
+                - 3617.0
+                - 3614.0
+                - 2438.0
+                - 2273.0
+                - 2191.0
+                - 729.0
+                - 939.0
+                strokeWeight: 3
+                z:
+                - 3324.0
+                - 4547.0
+                - 4932.0
+                - 4788.0
+                - 4577.0
+                - 4559.0
+                - 4480.0
+                - 4480.0
+                - 4368.0
+                - 4352.0
+                - 4161.0
+                - 4049.0
+                - 4048.0
+                - 3361.0
+                - 3360.0
+                - 3248.0
+                - 2769.0
+                - 2752.0
+                - 2097.0
+                - 2032.0
+                - 2032.0
+                - 1952.0
+                - 1712.0
+                - 1712.0
+                - 1633.0
+                - 1616.0
+                - 1025.0
+                - 1008.0
+                - 945.0
+                - 945.0
+                - 690.0
+                - 690.0
+                - 514.0
+                - 497.0
+                - 178.0
+                - 129.0
+                - -31.0
+                - -31.0
+                - -459.0
+                - -798.0
+                - -798.0
+                - -1006.0
+                - -1006.0
+                - -527.0
+                - -527.0
+                - -605.0
+                - -605.0
+                - -704.0
+                - -720.0
+                - -832.0
+                - -1070.0
+                - -1070.0
+                - -1520.0
+                - -1602.0
+                - -2026.0
+                - -1966.0
+                - -1982.0
+                - -1282.0
+                - -1295.0
+                - 3439.0
+                - 3457.0
+                - 3824.0
+                - 3824.0
+                - 3721.0
+                - 2785.0
+                - 2686.0
+                - 3324.0
+                label: '1.16'
+                ybottom: 64.0
+                strokeColor: 16711680
+                strokeOpacity: 0.8
+            area_3:
+                fillColor: 16711680
+                world: waldicraft
+                markup: false
+                ytop: 64.0
+                fillOpacity: 0.35
+                x:
+                - 528.0
+                - 528.0
+                - 539.0
+                - -200.0
+                - -353.0
+                - -935.0
+                - -1291.0
+                - -1453.0
+                - -1691.0
+                - -1690.0
+                - -2090.0
+                - -2140.0
+                - -1790.0
+                - -1790.0
+                - -1664.0
+                - -1170.0
+                - -906.0
+                - -377.0
+                - 443.0
+                - 1114.0
+                - 1399.0
+                - 1848.0
+                - 1560.0
+                - 1004.0
+                - 1040.0
+                - 1231.0
+                - 1231.0
+                - 641.0
+                - 641.0
+                - 1000.0
+                strokeWeight: 3
+                z:
+                - -4320.0
+                - -4545.0
+                - -4555.0
+                - -4637.0
+                - -4908.0
+                - -4908.0
+                - -4956.0
+                - -5093.0
+                - -5092.0
+                - -5181.0
+                - -5467.0
+                - -6551.0
+                - -6973.0
+                - -7357.0
+                - -7391.0
+                - -8206.0
+                - -9222.0
+                - -9815.0
+                - -9815.0
+                - -9662.0
+                - -8034.0
+                - -7992.0
+                - -6377.0
+                - -5701.0
+                - -4671.0
+                - -4671.0
+                - -4080.0
+                - -4080.0
+                - -4319.0
+                - -4395.0
+                label: 1.18.1
+                ybottom: 64.0
+                strokeColor: 16711680
+                strokeOpacity: 0.8
+            area_2:
+                fillColor: 16711680
+                world: waldicraft
+                markup: false
+                ytop: 64.0
+                fillOpacity: 0.35
+                x:
+                - 729.0
+                - 2191.0
+                - 2411.0
+                - 2159.0
+                - 2076.0
+                - 1745.0
+                - 1583.0
+                - 1583.0
+                - 1400.0
+                - 1376.0
+                - 1024.0
+                - 959.0
+                - 678.0
+                - 940.0
+                strokeWeight: 3
+                z:
+                - 2686.0
+                - 2785.0
+                - 4000.0
+                - 3985.0
+                - 4125.0
+                - 4127.0
+                - 4307.0
+                - 4496.0
+                - 4535.0
+                - 4720.0
+                - 4801.0
+                - 4796.0
+                - 4547.0
+                - 3324.0
+                label: 1.17.1
+                ybottom: 64.0
+                strokeColor: 16711680
+                strokeOpacity: 0.8
+        label: Versions
+        markers: {
+            }
+        lines: {
+            }
+        layerprio: 999
+        showlabels: false
+    Portals:
+        hide: false
+        circles: {
+            }
+        deficon: portal
+        areas: {
+            }
+        label: Portals
+        markers:
+            marker_1:
+                world: DIM-1
+                markup: false
+                x: 37.1396194134109
+                icon: portal
+                y: 43.0
+                z: 16.778245661865967
+                label: Nether - Home
+            marker_2:
+                world: waldicraft
+                markup: false
+                x: 285.9423231520908
+                icon: portal
+                y: 64.0
+                z: 116.07499998807907
+                label: Home
+            marker_3:
+                world: waldicraft
+                markup: false
+                x: 1478.5
+                icon: portal
+                y: 39.0
+                z: 1342.699999988079
+                label: The End
+            marker_4:
+                world: DIM1
+                markup: false
+                x: 1.9886493617870769
+                icon: portal
+                y: 60.0
+                z: -1.2110559018179041
+                label: Overworld
+            marker_5:
+                world: waldicraft
+                markup: false
+                x: -1456.0229481456875
+                icon: portal
+                y: 62.809486741892094
+                z: -6353.108505557554
+                label: Nether - West-Berlin
+            marker_6:
+                world: DIM-1
+                markup: false
+                x: -29.831460240817922
+                icon: portal
+                y: 161.0
+                z: -697.777914600406
+                label: Outpost
+            marker_7:
+                world: waldicraft
+                markup: false
+                x: -233.35387342314476
+                icon: portal
+                y: 132.0
+                z: -5596.8728004873
+                label: Nether - Outpost
+            marker_8:
+                world: DIM-1
+                markup: false
+                x: -167.9921579477868
+                icon: portal
+                y: 51.0
+                z: -802.6441553728923
+                label: West-Berlin
+            marker_9:
+                world: waldicraft
+                markup: false
+                x: -436.0722396610226
+                icon: portal
+                y: 68.0
+                z: -5812.934887680432
+                label: Nether - River
+        lines: {
+            }
+        layerprio: 50
+        showlabels: false
+    Temples:
+        hide: false
+        circles: {
+            }
+        deficon: temple
+        areas: {
+            }
+        label: Temples
+        markers:
+            marker_1:
+                world: waldicraft
+                markup: false
+                x: 753.0127330218121
+                icon: temple
+                y: 52.0
+                z: -208.13615896956915
+                label: Ocean Monument
+            marker_2:
+                world: waldicraft
+                markup: false
+                x: 815.8529371038904
+                icon: temple
+                y: 56.0
+                z: 208.11471583451552
+                label: Ocean Monument
+            marker_3:
+                world: waldicraft
+                markup: false
+                x: 0.037032441051462583
+                icon: temple
+                y: 56.0
+                z: 4272.036013533594
+                label: Ocean Monument
+            marker_4:
+                world: waldicraft
+                markup: false
+                x: 1035.2183553765406
+                icon: temple
+                y: 56.313
+                z: 1633.6196633263228
+                label: Monument
+            marker_5:
+                world: waldicraft
+                markup: false
+                x: -918.5198962604394
+                icon: temple
+                y: 65.0
+                z: -5481.982405862299
+                label: Jungle Temple
+        lines: {
+            }
+        layerprio: 40
+        showlabels: false
+playersets: {
+    }

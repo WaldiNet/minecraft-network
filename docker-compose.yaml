@@ -1,0 +1,357 @@
+version: "3.8"
+
+services:
+  # https://github.com/itzg/docker-bungeecord/
+  proxy:
+    image: itzg/bungeecord:java17
+    container_name: mc-proxy
+    restart: unless-stopped
+    ports:
+      - ${PROXY_PORT:-25565}:25577
+    environment:
+      TYPE: ${PROXY_TYPE}
+      DEBUG: "false"
+      ENABLE_RCON: "true"
+      PLUGINS: ${PROXY_PLUGINS}
+    volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - ${BASE_DIR}/${SERVER_NAME}/proxy/${PROXY_TYPE}/server:/server
+      - ${BASE_DIR}/${SERVER_NAME}/proxy/${PROXY_TYPE}/plugins:/plugins
+      - ${BASE_DIR}/${SERVER_NAME}/proxy/${PROXY_TYPE}/config:/config
+    labels:
+      com.centurylinklabs.watchtower.enable: "false"
+      com.centurylinklabs.watchtower.monitor-only: "true"
+
+  # https://docker-minecraft-server.readthedocs.io/
+  server-smp:
+    image: itzg/minecraft-server:java20-alpine
+    container_name: mc-server-smp
+    restart: unless-stopped
+    ports:
+      - ${MC_SMP_SERVER_PORT:-25566}:25565
+      - ${MOD_VOICECHAT_PORT_SMP:-24455}:24454/udp # Voicechat
+    environment:
+      # Java specific
+      TUNE_VIRTUALIZED: "true"
+      MAX_MEMORY: ${MC_SMP_MAX_MEMORY}
+      LOG_TIMESTAMP: "true"
+      # MAX_TICK_TIME: -1
+      # ENABLE_AUTOPAUSE: "true"
+      # MC Server specific
+      EULA: "true"
+      TYPE: ${SERVER_TYPE}
+      LEVEL: waldicraft
+      VERSION: ${SERVER_MC_VERSION}
+      SEED: ${MC_SMP_SEED}
+      MAX_PLAYERS: ${MC_SMP_MAX_PLAYERS:-10}
+      OVERRIDE_SERVER_PROPERTIES: "true"
+      MOTD: ${SERVER_MOTD}
+      DIFFICULTY: ${MC_SMP_DIFFICULTY}
+      ENABLE_WHITELIST: "true"
+      ENFORCE_WHITELIST: "true"
+      RCON_PORT: ${MC_SMP_RCON_PORT:-25575}
+      RCON_PASSWORD: ${MC_SMP_RCON_PASSWORD}
+      ENABLE_COMMAND_BLOCK: "true"
+      SNOOPER_ENABLED: "false"
+      SPAWN_PROTECTION: 0
+      VIEW_DISTANCE: ${SERVER_VIEW_DISTANCE}
+      ONLINE_MODE: "false" # Has to be false for the proxy to be working
+      # Mods & Datapacks
+      VANILLATWEAKS_FILE: /config/vt-datapacks.json,/config/vt-craftingtweaks.json
+      REMOVE_OLD_MODS: "true"
+      REMOVE_OLD_DATAPACKS: "true"
+      DATAPACKS: ${MC_SMP_DATAPACKS}
+      MODRINTH_DOWNLOAD_DEPENDENCIES: "required"
+      MODRINTH_PROJECTS: ${MC_SMP_MODRINTH_PROJECTS}
+      CF_API_KEY: ${SERVER_CF_API_KEY}
+      CURSEFORGE_FILES: ${MC_SMP_CURSEFORGE_FILES}
+      SPIGET_RESOURCES: ${MC_SMP_SPIGET_RESOURCES}
+    volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_SMP_NAME}/config:/config:ro
+      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_SMP_NAME}/data:/data
+      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_SMP_NAME}/mods:/mods:ro
+    labels:
+      com.centurylinklabs.watchtower.enable: "false"
+      com.centurylinklabs.watchtower.monitor-only: "true"
+  
+  # https://docker-minecraft-server.readthedocs.io/
+  server-expedition:
+    image: itzg/minecraft-server:java20-alpine
+    container_name: mc-server-expedition
+    restart: unless-stopped
+    ports:
+      - ${MC_EXPEDITION_SERVER_PORT:-25567}:25565
+      - ${MOD_VOICECHAT_PORT_EXPEDITION:-24456}:24454/udp # Voicechat
+    environment:
+      # Java specific
+      TUNE_VIRTUALIZED: "true"
+      MAX_MEMORY: ${MC_EXPEDITION_MAX_MEMORY}
+      LOG_TIMESTAMP: "true"
+      # MAX_TICK_TIME: -1
+      # ENABLE_AUTOPAUSE: "true"
+      # MC Server specific
+      EULA: "true"
+      TYPE: ${SERVER_TYPE}
+      LEVEL: expedition
+      VERSION: ${SERVER_MC_VERSION}
+      SEED: ${MC_EXPEDITION_SEED}
+      MAX_PLAYERS: ${MC_EXPEDITION_MAX_PLAYERS:-10}
+      OVERRIDE_SERVER_PROPERTIES: "true"
+      MOTD: ${SERVER_MOTD}
+      DIFFICULTY: ${MC_EXPEDITION_DIFFICULTY}
+      ENABLE_WHITELIST: "true"
+      ENFORCE_WHITELIST: "true"
+      RCON_PORT: ${MC_EXPEDITION_RCON_PORT:-25575}
+      RCON_PASSWORD: ${MC_EXPEDITION_RCON_PASSWORD}
+      ENABLE_COMMAND_BLOCK: "true"
+      SNOOPER_ENABLED: "false"
+      SPAWN_PROTECTION: 0
+      VIEW_DISTANCE: ${SERVER_VIEW_DISTANCE}
+      ONLINE_MODE: "false" # Has to be false for the proxy to be working
+      # Mods & Datapacks
+      VANILLATWEAKS_FILE: /config/vt-datapacks.json,/config/vt-craftingtweaks.json
+      REMOVE_OLD_DATAPACKS: "true"
+      REMOVE_OLD_MODS: "true"
+      DATAPACKS: ${MC_EXPEDITION_DATAPACKS}
+      MODRINTH_DOWNLOAD_DEPENDENCIES: "required"
+      MODRINTH_PROJECTS: ${MC_EXPEDITION_MODRINTH_PROJECTS}
+      CF_API_KEY: ${SERVER_CF_API_KEY}
+      CURSEFORGE_FILES: ${MC_EXPEDITION_CURSEFORGE_FILES}
+      SPIGET_RESOURCES: ${MC_EXPEDITION_SPIGET_RESOURCES}
+    volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_EXPEDITION_NAME}/config:/config:ro
+      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_EXPEDITION_NAME}/data:/data
+      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_EXPEDITION_NAME}/mods:/mods:ro
+    labels:
+      com.centurylinklabs.watchtower.enable: "false"
+      com.centurylinklabs.watchtower.monitor-only: "true"
+
+  # https://docker-minecraft-server.readthedocs.io/
+  server-testing:
+    image: itzg/minecraft-server:java20-alpine
+    container_name: mc-server-testing
+    restart: unless-stopped
+    ports:
+      - ${MC_TESTING_SERVER_PORT:-25568}:25565
+      - ${MOD_VOICECHAT_PORT_TESTING:-24456}:24454/udp # Voicechat
+    environment:
+      # Java specific
+      TUNE_VIRTUALIZED: "true"
+      MAX_MEMORY: ${MC_TESTING_MAX_MEMORY}
+      LOG_TIMESTAMP: "true"
+      # MAX_TICK_TIME: -1
+      # ENABLE_AUTOPAUSE: "true"
+      # MC Server specific
+      EULA: "true"
+      TYPE: ${SERVER_TYPE}
+      LEVEL: testing
+      VERSION: ${SERVER_MC_VERSION}
+      SEED: ${MC_TESTIN_SEED}
+      MAX_PLAYERS: ${MC_TESTING_MAX_PLAYERS}
+      LEVEL_TYPE: flat
+      OVERRIDE_SERVER_PROPERTIES: "true"
+      MOTD: ${SERVER_MOTD}
+      ENABLE_WHITELIST: "true"
+      ENFORCE_WHITELIST: "true"
+      RCON_PORT: ${MC_TESTING_RCON_PORT:-25576}
+      RCON_PASSWORD: ${MC_TESTING_RCON_PASSWORD}
+      ENABLE_COMMAND_BLOCK: "true"
+      DIFFICULTY: peaceful
+      MODE: creative
+      FORCE_GAMEMODE: "true"
+      SNOOPER_ENABLED: "false"
+      SPAWN_PROTECTION: 0
+      VIEW_DISTANCE: ${SERVER_VIEW_DISTANCE}
+      ONLINE_MODE: "false" # Has to be false for the proxy to be working
+      # Mods & Datapacks
+      VANILLATWEAKS_FILE: /config/vt-datapacks.json,/config/vt-craftingtweaks.json
+      REMOVE_OLD_MODS: "true"
+      REMOVE_OLD_DATAPACKS: "true"
+      DATAPACKS: ${MC_TESTING_DATAPACKS}
+      MODRINTH_DOWNLOAD_DEPENDENCIES: "required"
+      MODRINTH_PROJECTS: ${MC_TESTING_MODRINTH_PROJECTS}
+      CF_API_KEY: ${SERVER_CF_API_KEY}
+      CURSEFORGE_FILES: ${MC_TESTING_CURSEFORGE_FILES}
+      SPIGET_RESOURCES: ${MC_TESTING_SPIGET_RESOURCES}
+      RCON_CMDS_STARTUP: |-
+        /gamerule keepInventory true
+    volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_TESTING_NAME}/config:/config:ro
+      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_TESTING_NAME}/data:/data
+      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_TESTING_NAME}/mods:/mods:ro
+    labels:
+      com.centurylinklabs.watchtower.enable: "false"
+      com.centurylinklabs.watchtower.monitor-only: "true"
+
+  # https://github.com/itzg/docker-mc-backup
+  backup-smp:
+    image: itzg/mc-backup
+    container_name: mc-backup-smp
+    restart: unless-stopped
+    environment:
+      TZ: ${BASE_TIMEZONE}
+      BACKUP_NAME: ${MC_SMP_NAME}
+      BACKUP_INTERVAL: ${BACKUP_INTERVAL}
+      PAUSE_IF_NO_PLAYERS: ${BACKUP_PAUSE_IF_NO_PLAYERS}
+      PLAYERS_ONLINE_CHECK_INTERVAL: ${BACKUP_PLAYERS_ONLINE_CHECK_INTERVAL}
+      PRUNE_BACKUPS_DAYS: ${BACKUP_PRUNE_DAYS}
+      SERVER_PORT: ${MC_SMP_SERVER_PORT:-25566}
+      RCON_HOST: "server-smp"
+      RCON_PORT: ${MC_SMP_RCON_PORT:-25575}
+      RCON_PASSWORD: ${MC_SMP_RCON_PASSWORD}
+      EXCLUDES: ${BACKUP_EXCLUDES}
+    volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - ${BASE_DIR}/${SERVER_NAME}/backups/server/${MC_SMP_NAME}:/backups
+      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_SMP_NAME}:/data
+    labels:
+      com.centurylinklabs.watchtower.enable: "false"
+      com.centurylinklabs.watchtower.monitor-only: "true"
+
+  # https://github.com/itzg/docker-mc-backup
+  backup-expedition:
+    image: itzg/mc-backup
+    container_name: mc-backup-expedition
+    restart: unless-stopped
+    environment:
+      TZ: ${BASE_TIMEZONE}
+      BACKUP_NAME: ${MC_EXPEDITION_NAME}
+      BACKUP_INTERVAL: ${BACKUP_INTERVAL}
+      PAUSE_IF_NO_PLAYERS: ${BACKUP_PAUSE_IF_NO_PLAYERS}
+      PLAYERS_ONLINE_CHECK_INTERVAL: ${BACKUP_PLAYERS_ONLINE_CHECK_INTERVAL}
+      PRUNE_BACKUPS_DAYS: ${BACKUP_PRUNE_DAYS}
+      SERVER_PORT: ${MC_EXPEDITION_SERVER_PORT}
+      RCON_HOST: "server-expedition"
+      RCON_PORT: ${MC_EXPEDITION_RCON_PORT}
+      RCON_PASSWORD: ${MC_EXPEDITION_RCON_PASSWORD}
+      EXCLUDES: ${BACKUP_EXCLUDES}
+    volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - ${BASE_DIR}/${SERVER_NAME}/backups/server/${MC_EXPEDITION_NAME}:/backups
+      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_EXPEDITION_NAME}:/data
+    labels:
+      com.centurylinklabs.watchtower.enable: "false"
+      com.centurylinklabs.watchtower.monitor-only: "true"
+
+  # https://github.com/itzg/docker-mc-backup
+  backup-testing:
+    image: itzg/mc-backup
+    container_name: mc-backup-testing
+    restart: unless-stopped
+    environment:
+      TZ: ${BASE_TIMEZONE}
+      BACKUP_NAME: ${MC_TESTING_NAME}
+      BACKUP_INTERVAL: ${BACKUP_INTERVAL}
+      PAUSE_IF_NO_PLAYERS: ${BACKUP_PAUSE_IF_NO_PLAYERS}
+      PLAYERS_ONLINE_CHECK_INTERVAL: ${BACKUP_PLAYERS_ONLINE_CHECK_INTERVAL}
+      PRUNE_BACKUPS_DAYS: ${BACKUP_PRUNE_DAYS}
+      SERVER_PORT: ${MC_TESTING_SERVER_PORT}
+      RCON_HOST: "server-testing"
+      RCON_PORT: ${MC_TESTING_RCON_PORT:-25575}
+      RCON_PASSWORD: ${MC_TESTING_RCON_PASSWORD}
+      EXCLUDES: ${BACKUP_EXCLUDES}
+    volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - ${BASE_DIR}/${SERVER_NAME}/backups/server/${MC_TESTING_NAME}:/backups
+      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_TESTING_NAME}:/data
+    labels:
+      com.centurylinklabs.watchtower.enable: "false"
+      com.centurylinklabs.watchtower.monitor-only: "true"
+
+  # Dynmap    => https://github.com/webbukkit/dynmap/wiki/External-Webserver-Basics
+  # LiveAtlas => https://github.com/JLyne/LiveAtlas/wiki/Configuring-Multiple-Servers
+  service-nginx:
+    image: nginx:1.25-alpine
+    container_name: mc-service-nginx
+    restart: unless-stopped
+    ports:
+      - ${NGINX_PORT:-80}:80
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ${BASE_DIR}/${SERVER_NAME}/.docker/nginx/conf.d/:/etc/nginx/conf.d/
+      - ${BASE_DIR}/${SERVER_NAME}/services/nginx/www:/var/www
+      - ${BASE_DIR}/${SERVER_NAME}/services/nginx/logs:/var/log/nginx
+      # Dynmap => SMP
+      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_SMP_NAME}/data/dynmap/web/standalone:/var/www/maps/${MC_SMP_NAME}/standalone
+      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_SMP_NAME}/data/dynmap/web/tiles:/var/www/maps/${MC_SMP_NAME}/tiles
+      # Dynmap => Expedition
+      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_EXPEDITION_NAME}/data/dynmap/web/standalone:/var/www/maps/${MC_EXPEDITION_NAME}/standalone
+      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_EXPEDITION_NAME}/data/dynmap/web/tiles:/var/www/maps/${MC_EXPEDITION_NAME}/tiles
+      # Dynmap => Testing
+      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_TESTING_NAME}/data/dynmap/web/standalone:/var/www/maps/${MC_TESTING_NAME}/standalone
+      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_TESTING_NAME}/data/dynmap/web/tiles:/var/www/maps/${MC_TESTING_NAME}/tiles
+    labels:
+      com.centurylinklabs.watchtower.enable: "false"
+      com.centurylinklabs.watchtower.monitor-only: "true"
+
+  # Needed for dynmap serving
+  service-php-fpm:
+    image: php:8.2-fpm-alpine
+    container_name: mc-service-php
+    restart: unless-stopped
+    ports:
+      - ${PHP_PORT:-9000}:9000
+    volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - ${BASE_DIR}/${SERVER_NAME}/services/nginx/www:/var/www
+    labels:
+      com.centurylinklabs.watchtower.enable: "true"
+      com.centurylinklabs.watchtower.monitor-only: "false"
+
+  # Dynmap => https://github.com/webbukkit/dynmap/wiki/%5BTutorial%5D-Setting-up-a-standalone-web-server-with-MySQL-SQLite/
+  service-mysql:
+    image: mysql:8.1
+    container_name: mc-service-mysql
+    restart: unless-stopped
+    command: [ '--authentication_policy=mysql_native_password' ]
+    ports:
+      - ${DB_PORT:-3306}:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ${BASE_DIR}/${SERVER_NAME}/.docker/mysql/init:/docker-entrypoint-initdb.d
+      - ${BASE_DIR}/${SERVER_NAME}/services/mysql:/var/lib/mysql
+    labels:
+      com.centurylinklabs.watchtower.enable: "false"
+      com.centurylinklabs.watchtower.monitor-only: "true"
+
+  # service-redis:
+  #   image: redis:7.2-alpine
+  #   container_name: mc-service-redis
+  #   restart: unless-stopped
+  #   command: redis-server --requirepass dbg*RNC3hqm_zxw0upx
+  #   ports:
+  #     - ${REDIS_PORT}:6379
+  #   volumes:
+  #     - /etc/localtime:/etc/localtime:ro
+  #     - ${BASE_DIR}/${SERVER_NAME}/services/redis:/var/lib/redis
+  #   labels:
+  #     com.centurylinklabs.watchtower.enable: "false"
+  #     com.centurylinklabs.watchtower.monitor-only: "true"
+
+  service-code-server:
+    image: lscr.io/linuxserver/code-server
+    container_name: service-code-server
+    restart: unless-stopped
+    ports:
+      - 8443:8443
+    environment:
+      PUID: 1000
+      PGID: 1000
+      TZ: ${BASE_TIMEZONE}
+      PASSWORD: ${SERVICE_VSCODE_PASSWORD}
+      SUDO_PASSWORD: ${SERVICE_VSCODE_SUDO_PASSWORD}
+      PROXY_DOMAIN: ${SERVICE_VSCODE_PROXY_DOMAIN}
+    volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - ${BASE_DIR}/${SERVER_NAME}/services/code-server/config:/config
+      - ${BASE_DIR}/${SERVER_NAME}:/config/workspace
+    labels:
+      com.centurylinklabs.watchtower.enable: "true"
+      com.centurylinklabs.watchtower.monitor-only: "false"

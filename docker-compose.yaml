@@ -1,4 +1,8 @@
-version: "3.8"
+x-arcane:
+  icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/minecraft.svg
+  urls:
+    - https://github.com/WaldiNet/minecraft-network
+
 
 services:
   # https://github.com/itzg/docker-bungeecord/
@@ -19,8 +23,8 @@ services:
       - ${BASE_DIR}/${SERVER_NAME}/proxy/${PROXY_TYPE}/plugins:/plugins
       - ${BASE_DIR}/${SERVER_NAME}/proxy/${PROXY_TYPE}/config:/config
     labels:
-      com.centurylinklabs.watchtower.enable: "false"
-      com.centurylinklabs.watchtower.monitor-only: "true"
+      #com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/minecraft.svg
+      com.getarcaneapp.arcane.updater: false
 
   # https://docker-minecraft-server.readthedocs.io/
   server-smp:
@@ -72,8 +76,8 @@ services:
       - ${BASE_DIR}/${SERVER_NAME}/server/${MC_SMP_NAME}/data:/data
       - ${BASE_DIR}/${SERVER_NAME}/server/${MC_SMP_NAME}/mods:/mods:ro
     labels:
-      com.centurylinklabs.watchtower.enable: "false"
-      com.centurylinklabs.watchtower.monitor-only: "true"
+      com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/minecraft.svg
+      com.getarcaneapp.arcane.updater: false
   
   # https://docker-minecraft-server.readthedocs.io/
   server-expedition:
@@ -125,8 +129,8 @@ services:
       - ${BASE_DIR}/${SERVER_NAME}/server/${MC_EXPEDITION_NAME}/data:/data
       - ${BASE_DIR}/${SERVER_NAME}/server/${MC_EXPEDITION_NAME}/mods:/mods:ro
     labels:
-      com.centurylinklabs.watchtower.enable: "false"
-      com.centurylinklabs.watchtower.monitor-only: "true"
+      com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/minecraft.svg
+      com.getarcaneapp.arcane.updater: false
 
   # https://docker-minecraft-server.readthedocs.io/
   server-testing:
@@ -183,8 +187,8 @@ services:
       - ${BASE_DIR}/${SERVER_NAME}/server/${MC_TESTING_NAME}/data:/data
       - ${BASE_DIR}/${SERVER_NAME}/server/${MC_TESTING_NAME}/mods:/mods:ro
     labels:
-      com.centurylinklabs.watchtower.enable: "false"
-      com.centurylinklabs.watchtower.monitor-only: "true"
+      com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/minecraft.svg
+      com.getarcaneapp.arcane.updater: false
 
   # https://github.com/itzg/docker-mc-backup
   backup-smp:
@@ -208,8 +212,8 @@ services:
       - ${BASE_DIR}/${SERVER_NAME}/backups/server/${MC_SMP_NAME}:/backups
       - ${BASE_DIR}/${SERVER_NAME}/server/${MC_SMP_NAME}:/data
     labels:
-      com.centurylinklabs.watchtower.enable: "false"
-      com.centurylinklabs.watchtower.monitor-only: "true"
+      #com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/minecraft.svg
+      com.getarcaneapp.arcane.updater: false
 
   # https://github.com/itzg/docker-mc-backup
   backup-expedition:
@@ -233,8 +237,8 @@ services:
       - ${BASE_DIR}/${SERVER_NAME}/backups/server/${MC_EXPEDITION_NAME}:/backups
       - ${BASE_DIR}/${SERVER_NAME}/server/${MC_EXPEDITION_NAME}:/data
     labels:
-      com.centurylinklabs.watchtower.enable: "false"
-      com.centurylinklabs.watchtower.monitor-only: "true"
+      #com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/minecraft.svg
+      com.getarcaneapp.arcane.updater: false
 
   # https://github.com/itzg/docker-mc-backup
   backup-testing:
@@ -258,68 +262,68 @@ services:
       - ${BASE_DIR}/${SERVER_NAME}/backups/server/${MC_TESTING_NAME}:/backups
       - ${BASE_DIR}/${SERVER_NAME}/server/${MC_TESTING_NAME}:/data
     labels:
-      com.centurylinklabs.watchtower.enable: "false"
-      com.centurylinklabs.watchtower.monitor-only: "true"
+      #com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/minecraft.svg
+      com.getarcaneapp.arcane.updater: false
 
   # Dynmap    => https://github.com/webbukkit/dynmap/wiki/External-Webserver-Basics
   # LiveAtlas => https://github.com/JLyne/LiveAtlas/wiki/Configuring-Multiple-Servers
-  service-nginx:
-    image: nginx:1.25-alpine
-    container_name: mc-service-nginx
-    restart: unless-stopped
-    ports:
-      - ${NGINX_PORT:-80}:80
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - ${BASE_DIR}/${SERVER_NAME}/.docker/nginx/conf.d/:/etc/nginx/conf.d/
-      - ${BASE_DIR}/${SERVER_NAME}/services/nginx/www:/var/www
-      - ${BASE_DIR}/${SERVER_NAME}/services/nginx/logs:/var/log/nginx
-      # Dynmap => SMP
-      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_SMP_NAME}/data/dynmap/web/standalone:/var/www/maps/${MC_SMP_NAME}/standalone
-      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_SMP_NAME}/data/dynmap/web/tiles:/var/www/maps/${MC_SMP_NAME}/tiles
-      # Dynmap => Expedition
-      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_EXPEDITION_NAME}/data/dynmap/web/standalone:/var/www/maps/${MC_EXPEDITION_NAME}/standalone
-      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_EXPEDITION_NAME}/data/dynmap/web/tiles:/var/www/maps/${MC_EXPEDITION_NAME}/tiles
-      # Dynmap => Testing
-      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_TESTING_NAME}/data/dynmap/web/standalone:/var/www/maps/${MC_TESTING_NAME}/standalone
-      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_TESTING_NAME}/data/dynmap/web/tiles:/var/www/maps/${MC_TESTING_NAME}/tiles
-    labels:
-      com.centurylinklabs.watchtower.enable: "false"
-      com.centurylinklabs.watchtower.monitor-only: "true"
+  # service-nginx:
+  #   image: nginx:1.25-alpine
+  #   container_name: mc-service-nginx
+  #   restart: unless-stopped
+  #   ports:
+  #     - ${NGINX_PORT:-80}:80
+  #   volumes:
+  #     - /etc/localtime:/etc/localtime:ro
+  #     - ${BASE_DIR}/${SERVER_NAME}/.docker/nginx/conf.d/:/etc/nginx/conf.d/
+  #     - ${BASE_DIR}/${SERVER_NAME}/services/nginx/www:/var/www
+  #     - ${BASE_DIR}/${SERVER_NAME}/services/nginx/logs:/var/log/nginx
+  #     # Dynmap => SMP
+  #     - ${BASE_DIR}/${SERVER_NAME}/server/${MC_SMP_NAME}/data/dynmap/web/standalone:/var/www/maps/${MC_SMP_NAME}/standalone
+  #     - ${BASE_DIR}/${SERVER_NAME}/server/${MC_SMP_NAME}/data/dynmap/web/tiles:/var/www/maps/${MC_SMP_NAME}/tiles
+  #     # Dynmap => Expedition
+  #     - ${BASE_DIR}/${SERVER_NAME}/server/${MC_EXPEDITION_NAME}/data/dynmap/web/standalone:/var/www/maps/${MC_EXPEDITION_NAME}/standalone
+  #     - ${BASE_DIR}/${SERVER_NAME}/server/${MC_EXPEDITION_NAME}/data/dynmap/web/tiles:/var/www/maps/${MC_EXPEDITION_NAME}/tiles
+  #     # Dynmap => Testing
+  #     - ${BASE_DIR}/${SERVER_NAME}/server/${MC_TESTING_NAME}/data/dynmap/web/standalone:/var/www/maps/${MC_TESTING_NAME}/standalone
+  #     - ${BASE_DIR}/${SERVER_NAME}/server/${MC_TESTING_NAME}/data/dynmap/web/tiles:/var/www/maps/${MC_TESTING_NAME}/tiles
+  #   labels:
+  #     com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/nginx.svg
+  #     com.getarcaneapp.arcane.updater: false
 
   # Needed for dynmap serving
-  service-php-fpm:
-    image: php:8.2-fpm-alpine
-    container_name: mc-service-php
-    restart: unless-stopped
-    ports:
-      - ${PHP_PORT:-9000}:9000
-    volumes:
-      - /etc/timezone:/etc/timezone:ro
-      - ${BASE_DIR}/${SERVER_NAME}/services/nginx/www:/var/www
-    labels:
-      com.centurylinklabs.watchtower.enable: "true"
-      com.centurylinklabs.watchtower.monitor-only: "false"
+  # service-php-fpm:
+  #   image: php:8.2-fpm-alpine
+  #   container_name: mc-service-php
+  #   restart: unless-stopped
+  #   ports:
+  #     - ${PHP_PORT:-9000}:9000
+  #   volumes:
+  #     - /etc/timezone:/etc/timezone:ro
+  #     - ${BASE_DIR}/${SERVER_NAME}/services/nginx/www:/var/www
+  #   labels:
+  #     #com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/nginx.svg
+  #     com.getarcaneapp.arcane.updater: false
 
   # Dynmap => https://github.com/webbukkit/dynmap/wiki/%5BTutorial%5D-Setting-up-a-standalone-web-server-with-MySQL-SQLite/
-  service-mysql:
-    image: mysql:8.1
-    container_name: mc-service-mysql
-    restart: unless-stopped
-    command: [ '--authentication_policy=mysql_native_password' ]
-    ports:
-      - ${DB_PORT:-3306}:3306
-    environment:
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
-      MYSQL_USER: ${DB_USER}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - ${BASE_DIR}/${SERVER_NAME}/.docker/mysql/init:/docker-entrypoint-initdb.d
-      - ${BASE_DIR}/${SERVER_NAME}/services/mysql:/var/lib/mysql
-    labels:
-      com.centurylinklabs.watchtower.enable: "false"
-      com.centurylinklabs.watchtower.monitor-only: "true"
+  # service-mysql:
+  #   image: mysql:8.1
+  #   container_name: mc-service-mysql
+  #   restart: unless-stopped
+  #   command: [ '--authentication_policy=mysql_native_password' ]
+  #   ports:
+  #     - ${DB_PORT:-3306}:3306
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+  #     MYSQL_USER: ${DB_USER}
+  #     MYSQL_PASSWORD: ${DB_PASSWORD}
+  #   volumes:
+  #     - /etc/localtime:/etc/localtime:ro
+  #     - ${BASE_DIR}/${SERVER_NAME}/.docker/mysql/init:/docker-entrypoint-initdb.d
+  #     - ${BASE_DIR}/${SERVER_NAME}/services/mysql:/var/lib/mysql
+  #   labels:
+  #     #com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/nginx.svg
+  #     com.getarcaneapp.arcane.updater: false
 
   # service-redis:
   #   image: redis:7.2-alpine
@@ -353,5 +357,5 @@ services:
       - ${BASE_DIR}/${SERVER_NAME}/services/code-server/config:/config
       - ${BASE_DIR}/${SERVER_NAME}:/config/workspace
     labels:
-      com.centurylinklabs.watchtower.enable: "true"
-      com.centurylinklabs.watchtower.monitor-only: "false"
+      com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/visual-studio-code.svg
+      com.getarcaneapp.arcane.updater: false

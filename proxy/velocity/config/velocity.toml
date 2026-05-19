@@ -7,7 +7,7 @@ bind = "0.0.0.0:25577"
 # What should be the MOTD? This gets displayed when the player adds your server to
 # their server list. Only MiniMessage format is accepted.
 # https://webui.advntr.dev/?mode=chat_closed&input=%3Cdark_green%3EWaldiCraft%3C%2Fdark_green%3E%20%7C%20%3Cred%3ESurvival%201.20.1%3C%2Fred%3E%20%7C%20Fabric&bg=grass
-motd = "<dark_green>WaldiCraft</dark_green> | <red>Survival 1.20.1</red> | Fabric"
+motd = "<dark_green>WaldiCraft</dark_green> | <red>Survival 26.1.2</red> | Fabric"
 
 # What should we display for the maximum number of players? (Velocity does not support a cap
 # on the number of players online.)

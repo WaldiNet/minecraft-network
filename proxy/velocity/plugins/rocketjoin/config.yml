@@ -78,8 +78,8 @@ conditions:
 # Set to "disable" to disable this feature
 # welcome: "disable"
 welcome: "\n<st>========</st> <color:#ffeb3b>Welcome to WaldiCraft</color> <st>========</st><gray>\n
-<white>*</white> <click:open_url:'https://mc.xpand4b.de'><i><hover:show_text:'Dynamic Map'>Dynamic Map</hover></i></click>\n
-<white>*</white> <click:open_url:'https://monitor.xpand4b.de/status/minecraft'><i><hover:show_text:'Server Status'>Server Status</hover></i></click>\n
+<white>*</white> <click:open_url:'https://mc.waldinet.de'><i><hover:show_text:'Dynamic Map'>Dynamic Map</hover></i></click>\n
+<white>*</white> <click:open_url:'https://monitor.falsett.de/status/minecraft'><i><hover:show_text:'Server Status'>Server Status</hover></i></click>\n
 <white>*</white> <click:suggest_command:'/dmarker add NAME set:{Tower|Village|Farms|Temples|Portals}'><i><hover:show_text:'Dynmap Marker Command'>Dynmap Marker Command</hover></i></click>\n\n
 <white>You can also switch between worlds! Just type...\n
 <white>*</white> <gray><click:run_command:'/server waldicraft'><i><hover:show_text:'/waldicraft'>/waldicraft</hover></i></click>\n

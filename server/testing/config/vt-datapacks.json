@@ -2,42 +2,33 @@
     "type": "datapacks",
     "version": "26.1",
     "packs": {
-        "survival": [
-            "armor status",
-            "afk display",
-            "multiplayer sleep",
-            "graves",
+        "Decorative/Cosmetic": [
+            "armor statues",
             "custom nether portals",
-            "couldron concrete",
-            "track raw statistics",
-            "track statistics",
-            "nether portal coords",
-            "real time clock"
-        ],
-        "items": [
-            "armored elytra",
+            "more mob heads",
+            "name colors",
             "player head drops"
         ],
-        "mobs": [
-            "anti enderman grief",
-            "double shulker shells",
-            "dragon drops",
-            "larger phantoms",
-            "more mob heads",
-            "villager death messages"
-        ],
-        "utilities": [
-            "name colors",
-            "spectator night vision",
-            "spectator conduit power"
-        ],
-        "hermitcraft": [
-            "tag"
-        ],
-        "experimental": [
-            "xp management",
+        "Convenience": [
+            "cauldron concrete",
             "chunk loaders",
-            "elevators"
+            "elevators",
+            "multiplayer sleep",
+            "spectator conduit power",
+            "spectator night vision"
+        ],
+        "Gameplay Changes": [
+            "anti enderman grief",
+            "armored elytra",
+            "graves"
+        ],
+        "Informative": [
+            "afk display",
+            "nether portal coords",
+            "real time clock",
+            "track raw statistics",
+            "track statistics",
+            "villager death messages"
         ]
     }
 }

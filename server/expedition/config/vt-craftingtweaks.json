@@ -1,25 +1,24 @@
 {
     "type": "craftingtweaks",
-    "version": "26.01",
+    "version": "26.1",
     "packs": {
-        "quality of life": [
+        "Quality of Life": [
             "rotten flesh to leather",
             "straight to shapeless",
             "blackstone cobblestone"
         ],
-        "more blocks": [
+        "More Blocks": [
             "more trapdoors",
             "more bark",
             "more stairs",
             "more bricks"
         ],
-        "craftables": [
+        "Craftables": [
             "craftable gravel",
             "craftable horse armor",
-            "craftable name tags",
             "craftable blackstone"
         ],
-        "unpackables": [
+        "Unpackables": [
             "unpackable nether wart",
             "unpackable ice"
         ]

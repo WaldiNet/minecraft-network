@@ -61,7 +61,7 @@ services:
       VIEW_DISTANCE: ${SERVER_VIEW_DISTANCE}
       ONLINE_MODE: "false" # Has to be false for the proxy to be working
       # Mods & Datapacks
-      VANILLATWEAKS_FILE: /server/${MC_SMP_NAME}/config/vt-datapacks.json,/server/${MC_SMP_NAME}/config/vt-craftingtweaks.json
+      VANILLATWEAKS_FILE: /config/vt-datapacks.json,/config/vt-craftingtweaks.json
       REMOVE_OLD_MODS: "true"
       REMOVE_OLD_DATAPACKS: "true"
       DATAPACKS: ${MC_SMP_DATAPACKS}
@@ -114,7 +114,7 @@ services:
       VIEW_DISTANCE: ${SERVER_VIEW_DISTANCE}
       ONLINE_MODE: "false" # Has to be false for the proxy to be working
       # Mods & Datapacks
-      VANILLATWEAKS_FILE: /server/${MC_EXPEDITION_NAME}/config/vt-datapacks.json,/server/${MC_EXPEDITION_NAME}/config/vt-craftingtweaks.json
+      VANILLATWEAKS_FILE: /config/vt-datapacks.json,/config/vt-craftingtweaks.json
       REMOVE_OLD_DATAPACKS: "true"
       REMOVE_OLD_MODS: "true"
       DATAPACKS: ${MC_EXPEDITION_DATAPACKS}
@@ -170,7 +170,7 @@ services:
       VIEW_DISTANCE: ${SERVER_VIEW_DISTANCE}
       ONLINE_MODE: "false" # Has to be false for the proxy to be working
       # Mods & Datapacks
-      VANILLATWEAKS_FILE: /server/${MC_TESTING_NAME}/config/vt-datapacks.json,/server/${MC_TESTING_NAME}/config/vt-craftingtweaks.json
+      VANILLATWEAKS_FILE: /config/vt-datapacks.json,/config/vt-craftingtweaks.json
       REMOVE_OLD_MODS: "true"
       REMOVE_OLD_DATAPACKS: "true"
       DATAPACKS: ${MC_TESTING_DATAPACKS}

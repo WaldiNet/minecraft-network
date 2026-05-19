@@ -16,7 +16,7 @@ services:
       TYPE: ${PROXY_TYPE}
       DEBUG: "false"
       ENABLE_RCON: "true"
-      PLUGINS_FILE: ${PLUGINS_FILE}
+      PLUGINS: ${PROXY_PLUGINS}
     volumes:
       - /etc/timezone:/etc/timezone:ro
       - ${BASE_DIR}/${SERVER_NAME}/proxy/${PROXY_TYPE}/server:/server

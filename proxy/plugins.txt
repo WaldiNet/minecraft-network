@@ -1,9 +1,0 @@
-# https://github.com/Lorenzo0111/RocketJoin
-https://github.com/Lorenzo0111/RocketJoin/releases/download/2.5/RocketJoin-velocity-2.5.jar
-
-# https://cdn-raw.modrinth.com/data/16vhQOQN/versions/OQpVrXXW/minimotd-velocity-2.0.13.jar
-# https://ci.dmulloy2.net/job/ProtocolLib/668/artifact/build/libs/ProtocolLib.ja
-# https://github.com/oddlama/vane/releases/download/v1.12.3/vane-velocity-1.12.3.jar
-# https://github.com/oddlama/vane/releases/download/v1.12.3/vane-core-1.12.3.jar
-# https://github.com/oddlama/vane/releases/download/v1.12.3/vane-enchantments-1.12.3.jar
-# https://github.com/oddlama/vane/releases/download/v1.12.3/vane-trifles-1.12.3.jar

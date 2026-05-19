@@ -7,7 +7,7 @@ x-arcane:
 services:
   # https://github.com/itzg/docker-bungeecord/
   proxy:
-    image: itzg/bungeecord:java17
+    image: itzg/bungeecord:java25
     container_name: mc-proxy
     restart: unless-stopped
     ports:
@@ -16,19 +16,19 @@ services:
       TYPE: ${PROXY_TYPE}
       DEBUG: "false"
       ENABLE_RCON: "true"
-      PLUGINS: ${PROXY_PLUGINS}
+      PLUGINS_FILE: ${PLUGINS_FILE}
     volumes:
       - /etc/timezone:/etc/timezone:ro
       - ${BASE_DIR}/${SERVER_NAME}/proxy/${PROXY_TYPE}/server:/server
       - ${BASE_DIR}/${SERVER_NAME}/proxy/${PROXY_TYPE}/plugins:/plugins
       - ${BASE_DIR}/${SERVER_NAME}/proxy/${PROXY_TYPE}/config:/config
     labels:
-      #com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/minecraft.svg
+      com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/papermc-velocity.svg
       com.getarcaneapp.arcane.updater: false
 
   # https://docker-minecraft-server.readthedocs.io/
   server-smp:
-    image: itzg/minecraft-server:java20-alpine
+    image: itzg/minecraft-server:java25-alpine
     container_name: mc-server-smp
     restart: unless-stopped
     ports:
@@ -81,7 +81,7 @@ services:
   
   # https://docker-minecraft-server.readthedocs.io/
   server-expedition:
-    image: itzg/minecraft-server:java20-alpine
+    image: itzg/minecraft-server:java25-alpine
     container_name: mc-server-expedition
     restart: unless-stopped
     ports:
@@ -134,7 +134,7 @@ services:
 
   # https://docker-minecraft-server.readthedocs.io/
   server-testing:
-    image: itzg/minecraft-server:java20-alpine
+    image: itzg/minecraft-server:java25-alpine
     container_name: mc-server-testing
     restart: unless-stopped
     ports:
@@ -344,7 +344,7 @@ services:
     container_name: service-code-server
     restart: unless-stopped
     ports:
-      - 8443:8443
+      - ${SERVICE_VSCODE_PORT:-8443}:8443
     environment:
       PUID: 1000
       PGID: 1000

@@ -6,7 +6,7 @@
 #    |_|  \_\___/ \___|_|\_\___|\__|  \____/ \___/|_|_| |_|
 
 # Do not change these values
-config-version: 2.4
+config-version: 2.5
 already-asked: false
 
 # WARNING: If this plugin is running on bungeecord or velocity please read https://wiki.lorenzo0111.me/rocketjoin/bungeecord

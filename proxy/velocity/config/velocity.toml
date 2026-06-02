@@ -7,7 +7,7 @@ bind = "0.0.0.0:25577"
 # What should be the MOTD? This gets displayed when the player adds your server to
 # their server list. Only MiniMessage format is accepted.
 # https://webui.advntr.dev/?mode=chat_closed&input=%3Cdark_green%3EWaldiCraft%3C%2Fdark_green%3E%20%7C%20%3Cred%3ESurvival%201.20.1%3C%2Fred%3E%20%7C%20Fabric&bg=grass
-motd = "<dark_green>WaldiCraft</dark_green> | <red>Survival 1.20.1</red> | Fabric"
+motd = "<dark_green>WaldiCraft</dark_green> | <red>Survival 26.1.2</red> | Fabric"
 
 # What should we display for the maximum number of players? (Velocity does not support a cap
 # on the number of players online.)
@@ -73,14 +73,9 @@ enable-player-address-logging = true
 [servers]
 # Configure your servers here. Each key represents the server's name, and the value
 # represents the IP address of the server to connect to.
-# waldicraft = "167.86.71.76:1338" # xPand VPS
-waldicraft = "172.16.4.22:1338" # NHO2
-
-# expedition = "167.86.71.76:1339" # xPand VPS
-expedition = "172.16.4.22:1339" # NHO2
-
-# testing = "167.86.71.76:1340" # xPand VPS
-testing = "172.16.4.22:1340" # NHO2
+waldicraft = "server-smp:25565"
+expedition = "server-expedition:25565"
+testing = "server-testing:25565"
 
 # In what order we should try servers when a player logs in or is kicked from a server.
 try = [

@@ -1,35 +1,46 @@
-version: "3.8"
+x-arcane:
+  icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/minecraft.svg
+  urls:
+    - https://github.com/WaldiNet/minecraft-network
+
 
 services:
   # https://github.com/itzg/docker-bungeecord/
   proxy:
-    image: itzg/bungeecord:java17
+    image: itzg/bungeecord:java25
     container_name: mc-proxy
     restart: unless-stopped
     ports:
       - ${PROXY_PORT:-25565}:25577
+    networks:
+      - mc-proxy
     environment:
       TYPE: ${PROXY_TYPE}
       DEBUG: "false"
       ENABLE_RCON: "true"
       PLUGINS: ${PROXY_PLUGINS}
+      MODRINTH_PROJECTS: ${PROXY_MODRINTH_PROJECTS}
+      MINECRAFT_VERSION: ${SERVER_MC_VERSION}
     volumes:
       - /etc/timezone:/etc/timezone:ro
-      - ${BASE_DIR}/${SERVER_NAME}/proxy/${PROXY_TYPE}/server:/server
-      - ${BASE_DIR}/${SERVER_NAME}/proxy/${PROXY_TYPE}/plugins:/plugins
-      - ${BASE_DIR}/${SERVER_NAME}/proxy/${PROXY_TYPE}/config:/config
+      - ./proxy/${PROXY_TYPE}/server:/server
+      - ./proxy/${PROXY_TYPE}/plugins:/plugins
+      - ./proxy/${PROXY_TYPE}/config:/config
     labels:
-      com.centurylinklabs.watchtower.enable: "false"
-      com.centurylinklabs.watchtower.monitor-only: "true"
+      com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/papermc-velocity.svg
+      com.getarcaneapp.arcane.updater: false
 
   # https://docker-minecraft-server.readthedocs.io/
   server-smp:
-    image: itzg/minecraft-server:java20-alpine
+    image: itzg/minecraft-server:java25-alpine
     container_name: mc-server-smp
     restart: unless-stopped
     ports:
       - ${MC_SMP_SERVER_PORT:-25566}:25565
       - ${MOD_VOICECHAT_PORT_SMP:-24455}:24454/udp # Voicechat
+    networks:
+      - mc-proxy
+      - mc-smp-backup
     environment:
       # Java specific
       TUNE_VIRTUALIZED: "true"
@@ -40,7 +51,7 @@ services:
       # MC Server specific
       EULA: "true"
       TYPE: ${SERVER_TYPE}
-      LEVEL: waldicraft
+      LEVEL: world-${MC_SMP_NAME}
       VERSION: ${SERVER_MC_VERSION}
       SEED: ${MC_SMP_SEED}
       MAX_PLAYERS: ${MC_SMP_MAX_PLAYERS:-10}
@@ -63,26 +74,29 @@ services:
       DATAPACKS: ${MC_SMP_DATAPACKS}
       MODRINTH_DOWNLOAD_DEPENDENCIES: "required"
       MODRINTH_PROJECTS: ${MC_SMP_MODRINTH_PROJECTS}
-      CF_API_KEY: ${SERVER_CF_API_KEY}
+      CF_API_KEY: ${SERVER_CURSEFORGE_API_KEY}
       CURSEFORGE_FILES: ${MC_SMP_CURSEFORGE_FILES}
       SPIGET_RESOURCES: ${MC_SMP_SPIGET_RESOURCES}
     volumes:
       - /etc/timezone:/etc/timezone:ro
-      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_SMP_NAME}/config:/config:ro
-      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_SMP_NAME}/data:/data
-      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_SMP_NAME}/mods:/mods:ro
+      - ./server/${MC_SMP_NAME}/config:/config:ro
+      - ./server/${MC_SMP_NAME}/data:/data
+      - ./server/${MC_SMP_NAME}/mods:/mods:ro
     labels:
-      com.centurylinklabs.watchtower.enable: "false"
-      com.centurylinklabs.watchtower.monitor-only: "true"
+      com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/minecraft.svg
+      com.getarcaneapp.arcane.updater: false
   
   # https://docker-minecraft-server.readthedocs.io/
   server-expedition:
-    image: itzg/minecraft-server:java20-alpine
+    image: itzg/minecraft-server:java25-alpine
     container_name: mc-server-expedition
     restart: unless-stopped
     ports:
       - ${MC_EXPEDITION_SERVER_PORT:-25567}:25565
       - ${MOD_VOICECHAT_PORT_EXPEDITION:-24456}:24454/udp # Voicechat
+    networks:
+      - mc-proxy
+      - mc-expedition-backup
     environment:
       # Java specific
       TUNE_VIRTUALIZED: "true"
@@ -93,7 +107,7 @@ services:
       # MC Server specific
       EULA: "true"
       TYPE: ${SERVER_TYPE}
-      LEVEL: expedition
+      LEVEL: world-${MC_EXPEDITION_NAME}
       VERSION: ${SERVER_MC_VERSION}
       SEED: ${MC_EXPEDITION_SEED}
       MAX_PLAYERS: ${MC_EXPEDITION_MAX_PLAYERS:-10}
@@ -116,26 +130,29 @@ services:
       DATAPACKS: ${MC_EXPEDITION_DATAPACKS}
       MODRINTH_DOWNLOAD_DEPENDENCIES: "required"
       MODRINTH_PROJECTS: ${MC_EXPEDITION_MODRINTH_PROJECTS}
-      CF_API_KEY: ${SERVER_CF_API_KEY}
+      CF_API_KEY: ${SERVER_CURSEFORGE_API_KEY}
       CURSEFORGE_FILES: ${MC_EXPEDITION_CURSEFORGE_FILES}
       SPIGET_RESOURCES: ${MC_EXPEDITION_SPIGET_RESOURCES}
     volumes:
       - /etc/timezone:/etc/timezone:ro
-      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_EXPEDITION_NAME}/config:/config:ro
-      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_EXPEDITION_NAME}/data:/data
-      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_EXPEDITION_NAME}/mods:/mods:ro
+      - ./server/${MC_EXPEDITION_NAME}/config:/config:ro
+      - ./server/${MC_EXPEDITION_NAME}/data:/data
+      - ./server/${MC_EXPEDITION_NAME}/mods:/mods:ro
     labels:
-      com.centurylinklabs.watchtower.enable: "false"
-      com.centurylinklabs.watchtower.monitor-only: "true"
+      com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/minecraft.svg
+      com.getarcaneapp.arcane.updater: false
 
   # https://docker-minecraft-server.readthedocs.io/
   server-testing:
-    image: itzg/minecraft-server:java20-alpine
+    image: itzg/minecraft-server:java25-alpine
     container_name: mc-server-testing
     restart: unless-stopped
     ports:
       - ${MC_TESTING_SERVER_PORT:-25568}:25565
       - ${MOD_VOICECHAT_PORT_TESTING:-24456}:24454/udp # Voicechat
+    networks:
+      - mc-proxy
+      - mc-testing-backup
     environment:
       # Java specific
       TUNE_VIRTUALIZED: "true"
@@ -146,9 +163,9 @@ services:
       # MC Server specific
       EULA: "true"
       TYPE: ${SERVER_TYPE}
-      LEVEL: testing
+      LEVEL: world-${MC_TESTING_NAME}
       VERSION: ${SERVER_MC_VERSION}
-      SEED: ${MC_TESTIN_SEED}
+      SEED: ${MC_TESTING_SEED}
       MAX_PLAYERS: ${MC_TESTING_MAX_PLAYERS}
       LEVEL_TYPE: flat
       OVERRIDE_SERVER_PROPERTIES: "true"
@@ -172,25 +189,27 @@ services:
       DATAPACKS: ${MC_TESTING_DATAPACKS}
       MODRINTH_DOWNLOAD_DEPENDENCIES: "required"
       MODRINTH_PROJECTS: ${MC_TESTING_MODRINTH_PROJECTS}
-      CF_API_KEY: ${SERVER_CF_API_KEY}
+      CF_API_KEY: ${SERVER_CURSEFORGE_API_KEY}
       CURSEFORGE_FILES: ${MC_TESTING_CURSEFORGE_FILES}
       SPIGET_RESOURCES: ${MC_TESTING_SPIGET_RESOURCES}
       RCON_CMDS_STARTUP: |-
         /gamerule keepInventory true
     volumes:
       - /etc/timezone:/etc/timezone:ro
-      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_TESTING_NAME}/config:/config:ro
-      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_TESTING_NAME}/data:/data
-      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_TESTING_NAME}/mods:/mods:ro
+      - ./server/${MC_TESTING_NAME}/config:/config:ro
+      - ./server/${MC_TESTING_NAME}/data:/data
+      - ./server/${MC_TESTING_NAME}/mods:/mods:ro
     labels:
-      com.centurylinklabs.watchtower.enable: "false"
-      com.centurylinklabs.watchtower.monitor-only: "true"
+      com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/minecraft.svg
+      com.getarcaneapp.arcane.updater: false
 
   # https://github.com/itzg/docker-mc-backup
   backup-smp:
     image: itzg/mc-backup
     container_name: mc-backup-smp
     restart: unless-stopped
+    networks:
+      - mc-smp-backup
     environment:
       TZ: ${BASE_TIMEZONE}
       BACKUP_NAME: ${MC_SMP_NAME}
@@ -205,17 +224,19 @@ services:
       EXCLUDES: ${BACKUP_EXCLUDES}
     volumes:
       - /etc/timezone:/etc/timezone:ro
-      - ${BASE_DIR}/${SERVER_NAME}/backups/server/${MC_SMP_NAME}:/backups
-      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_SMP_NAME}:/data
+      - ./backups/server/${MC_SMP_NAME}:/backups
+      - ./server/${MC_SMP_NAME}:/data
     labels:
-      com.centurylinklabs.watchtower.enable: "false"
-      com.centurylinklabs.watchtower.monitor-only: "true"
+      #com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/minecraft.svg
+      com.getarcaneapp.arcane.updater: false
 
   # https://github.com/itzg/docker-mc-backup
   backup-expedition:
     image: itzg/mc-backup
     container_name: mc-backup-expedition
     restart: unless-stopped
+    networks:
+      - mc-expedition-backup
     environment:
       TZ: ${BASE_TIMEZONE}
       BACKUP_NAME: ${MC_EXPEDITION_NAME}
@@ -230,17 +251,19 @@ services:
       EXCLUDES: ${BACKUP_EXCLUDES}
     volumes:
       - /etc/timezone:/etc/timezone:ro
-      - ${BASE_DIR}/${SERVER_NAME}/backups/server/${MC_EXPEDITION_NAME}:/backups
-      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_EXPEDITION_NAME}:/data
+      - ./backups/server/${MC_EXPEDITION_NAME}:/backups
+      - ./server/${MC_EXPEDITION_NAME}:/data
     labels:
-      com.centurylinklabs.watchtower.enable: "false"
-      com.centurylinklabs.watchtower.monitor-only: "true"
+      #com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/minecraft.svg
+      com.getarcaneapp.arcane.updater: false
 
   # https://github.com/itzg/docker-mc-backup
   backup-testing:
     image: itzg/mc-backup
     container_name: mc-backup-testing
     restart: unless-stopped
+    networks:
+      - mc-testing-backup
     environment:
       TZ: ${BASE_TIMEZONE}
       BACKUP_NAME: ${MC_TESTING_NAME}
@@ -255,71 +278,71 @@ services:
       EXCLUDES: ${BACKUP_EXCLUDES}
     volumes:
       - /etc/timezone:/etc/timezone:ro
-      - ${BASE_DIR}/${SERVER_NAME}/backups/server/${MC_TESTING_NAME}:/backups
-      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_TESTING_NAME}:/data
+      - ./backups/server/${MC_TESTING_NAME}:/backups
+      - ./server/${MC_TESTING_NAME}:/data
     labels:
-      com.centurylinklabs.watchtower.enable: "false"
-      com.centurylinklabs.watchtower.monitor-only: "true"
+      #com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/minecraft.svg
+      com.getarcaneapp.arcane.updater: false
 
   # Dynmap    => https://github.com/webbukkit/dynmap/wiki/External-Webserver-Basics
   # LiveAtlas => https://github.com/JLyne/LiveAtlas/wiki/Configuring-Multiple-Servers
-  service-nginx:
-    image: nginx:1.25-alpine
-    container_name: mc-service-nginx
-    restart: unless-stopped
-    ports:
-      - ${NGINX_PORT:-80}:80
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - ${BASE_DIR}/${SERVER_NAME}/.docker/nginx/conf.d/:/etc/nginx/conf.d/
-      - ${BASE_DIR}/${SERVER_NAME}/services/nginx/www:/var/www
-      - ${BASE_DIR}/${SERVER_NAME}/services/nginx/logs:/var/log/nginx
-      # Dynmap => SMP
-      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_SMP_NAME}/data/dynmap/web/standalone:/var/www/maps/${MC_SMP_NAME}/standalone
-      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_SMP_NAME}/data/dynmap/web/tiles:/var/www/maps/${MC_SMP_NAME}/tiles
-      # Dynmap => Expedition
-      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_EXPEDITION_NAME}/data/dynmap/web/standalone:/var/www/maps/${MC_EXPEDITION_NAME}/standalone
-      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_EXPEDITION_NAME}/data/dynmap/web/tiles:/var/www/maps/${MC_EXPEDITION_NAME}/tiles
-      # Dynmap => Testing
-      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_TESTING_NAME}/data/dynmap/web/standalone:/var/www/maps/${MC_TESTING_NAME}/standalone
-      - ${BASE_DIR}/${SERVER_NAME}/server/${MC_TESTING_NAME}/data/dynmap/web/tiles:/var/www/maps/${MC_TESTING_NAME}/tiles
-    labels:
-      com.centurylinklabs.watchtower.enable: "false"
-      com.centurylinklabs.watchtower.monitor-only: "true"
+  # service-nginx:
+  #   image: nginx:1.25-alpine
+  #   container_name: mc-service-nginx
+  #   restart: unless-stopped
+  #   ports:
+  #     - ${NGINX_PORT:-80}:80
+  #   volumes:
+  #     - /etc/localtime:/etc/localtime:ro
+  #     - ./.docker/nginx/conf.d/:/etc/nginx/conf.d/
+  #     - ./services/nginx/www:/var/www
+  #     - ./services/nginx/logs:/var/log/nginx
+  #     # Dynmap => SMP
+  #     - ./server/${MC_SMP_NAME}/data/dynmap/web/standalone:/var/www/maps/${MC_SMP_NAME}/standalone
+  #     - ./server/${MC_SMP_NAME}/data/dynmap/web/tiles:/var/www/maps/${MC_SMP_NAME}/tiles
+  #     # Dynmap => Expedition
+  #     - ./server/${MC_EXPEDITION_NAME}/data/dynmap/web/standalone:/var/www/maps/${MC_EXPEDITION_NAME}/standalone
+  #     - ./server/${MC_EXPEDITION_NAME}/data/dynmap/web/tiles:/var/www/maps/${MC_EXPEDITION_NAME}/tiles
+  #     # Dynmap => Testing
+  #     - ./server/${MC_TESTING_NAME}/data/dynmap/web/standalone:/var/www/maps/${MC_TESTING_NAME}/standalone
+  #     - ./server/${MC_TESTING_NAME}/data/dynmap/web/tiles:/var/www/maps/${MC_TESTING_NAME}/tiles
+  #   labels:
+  #     com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/nginx.svg
+  #     com.getarcaneapp.arcane.updater: false
 
   # Needed for dynmap serving
-  service-php-fpm:
-    image: php:8.2-fpm-alpine
-    container_name: mc-service-php
-    restart: unless-stopped
-    ports:
-      - ${PHP_PORT:-9000}:9000
-    volumes:
-      - /etc/timezone:/etc/timezone:ro
-      - ${BASE_DIR}/${SERVER_NAME}/services/nginx/www:/var/www
-    labels:
-      com.centurylinklabs.watchtower.enable: "true"
-      com.centurylinklabs.watchtower.monitor-only: "false"
+  # service-php-fpm:
+  #   image: php:8.2-fpm-alpine
+  #   container_name: mc-service-php
+  #   restart: unless-stopped
+  #   ports:
+  #     - ${PHP_PORT:-9000}:9000
+  #   volumes:
+  #     - /etc/timezone:/etc/timezone:ro
+  #     - ./services/nginx/www:/var/www
+  #   labels:
+  #     #com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/nginx.svg
+  #     com.getarcaneapp.arcane.updater: false
 
   # Dynmap => https://github.com/webbukkit/dynmap/wiki/%5BTutorial%5D-Setting-up-a-standalone-web-server-with-MySQL-SQLite/
-  service-mysql:
-    image: mysql:8.1
-    container_name: mc-service-mysql
-    restart: unless-stopped
-    command: [ '--authentication_policy=mysql_native_password' ]
-    ports:
-      - ${DB_PORT:-3306}:3306
-    environment:
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
-      MYSQL_USER: ${DB_USER}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - ${BASE_DIR}/${SERVER_NAME}/.docker/mysql/init:/docker-entrypoint-initdb.d
-      - ${BASE_DIR}/${SERVER_NAME}/services/mysql:/var/lib/mysql
-    labels:
-      com.centurylinklabs.watchtower.enable: "false"
-      com.centurylinklabs.watchtower.monitor-only: "true"
+  # service-mysql:
+  #   image: mysql:8.1
+  #   container_name: mc-service-mysql
+  #   restart: unless-stopped
+  #   command: [ '--authentication_policy=mysql_native_password' ]
+  #   ports:
+  #     - ${DB_PORT:-3306}:3306
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+  #     MYSQL_USER: ${DB_USER}
+  #     MYSQL_PASSWORD: ${DB_PASSWORD}
+  #   volumes:
+  #     - /etc/localtime:/etc/localtime:ro
+  #     - ./.docker/mysql/init:/docker-entrypoint-initdb.d
+  #     - ./services/mysql:/var/lib/mysql
+  #   labels:
+  #     #com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/nginx.svg
+  #     com.getarcaneapp.arcane.updater: false
 
   # service-redis:
   #   image: redis:7.2-alpine
@@ -330,7 +353,7 @@ services:
   #     - ${REDIS_PORT}:6379
   #   volumes:
   #     - /etc/localtime:/etc/localtime:ro
-  #     - ${BASE_DIR}/${SERVER_NAME}/services/redis:/var/lib/redis
+  #     - ./services/redis:/var/lib/redis
   #   labels:
   #     com.centurylinklabs.watchtower.enable: "false"
   #     com.centurylinklabs.watchtower.monitor-only: "true"
@@ -340,7 +363,7 @@ services:
     container_name: service-code-server
     restart: unless-stopped
     ports:
-      - 8443:8443
+      - ${SERVICE_VSCODE_PORT:-8443}:8443
     environment:
       PUID: 1000
       PGID: 1000
@@ -350,8 +373,18 @@ services:
       PROXY_DOMAIN: ${SERVICE_VSCODE_PROXY_DOMAIN}
     volumes:
       - /etc/timezone:/etc/timezone:ro
-      - ${BASE_DIR}/${SERVER_NAME}/services/code-server/config:/config
-      - ${BASE_DIR}/${SERVER_NAME}:/config/workspace
+      - ./services/code-server/config:/config
+      - ./:/config/workspace
     labels:
-      com.centurylinklabs.watchtower.enable: "true"
-      com.centurylinklabs.watchtower.monitor-only: "false"
+      com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/visual-studio-code.svg
+      com.getarcaneapp.arcane.updater: false
+
+networks:
+  mc-proxy:
+    driver: bridge
+  mc-smp-backup:
+    driver: bridge
+  mc-expedition-backup:
+    driver: bridge
+  mc-testing-backup:
+    driver: bridge

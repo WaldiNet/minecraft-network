@@ -74,7 +74,7 @@ services:
       DATAPACKS: ${MC_SMP_DATAPACKS}
       MODRINTH_DOWNLOAD_DEPENDENCIES: "required"
       MODRINTH_PROJECTS: ${MC_SMP_MODRINTH_PROJECTS}
-      CF_API_KEY: ${SERVER_CURSEFORG_API_KEY}
+      CF_API_KEY: ${SERVER_CURSEFORGE_API_KEY}
       CURSEFORGE_FILES: ${MC_SMP_CURSEFORGE_FILES}
       SPIGET_RESOURCES: ${MC_SMP_SPIGET_RESOURCES}
     volumes:
@@ -130,7 +130,7 @@ services:
       DATAPACKS: ${MC_EXPEDITION_DATAPACKS}
       MODRINTH_DOWNLOAD_DEPENDENCIES: "required"
       MODRINTH_PROJECTS: ${MC_EXPEDITION_MODRINTH_PROJECTS}
-      CF_API_KEY: ${SERVER_CURSEFORG_API_KEY}
+      CF_API_KEY: ${SERVER_CURSEFORGE_API_KEY}
       CURSEFORGE_FILES: ${MC_EXPEDITION_CURSEFORGE_FILES}
       SPIGET_RESOURCES: ${MC_EXPEDITION_SPIGET_RESOURCES}
     volumes:
@@ -189,7 +189,7 @@ services:
       DATAPACKS: ${MC_TESTING_DATAPACKS}
       MODRINTH_DOWNLOAD_DEPENDENCIES: "required"
       MODRINTH_PROJECTS: ${MC_TESTING_MODRINTH_PROJECTS}
-      CF_API_KEY: ${SERVER_CURSEFORG_API_KEY}
+      CF_API_KEY: ${SERVER_CURSEFORGE_API_KEY}
       CURSEFORGE_FILES: ${MC_TESTING_CURSEFORGE_FILES}
       SPIGET_RESOURCES: ${MC_TESTING_SPIGET_RESOURCES}
       RCON_CMDS_STARTUP: |-
@@ -294,18 +294,18 @@ services:
   #     - ${NGINX_PORT:-80}:80
   #   volumes:
   #     - /etc/localtime:/etc/localtime:ro
-  #     - ${BASE_DIR}/${SERVER_NAME}/.docker/nginx/conf.d/:/etc/nginx/conf.d/
-  #     - ${BASE_DIR}/${SERVER_NAME}/services/nginx/www:/var/www
-  #     - ${BASE_DIR}/${SERVER_NAME}/services/nginx/logs:/var/log/nginx
+  #     - ./.docker/nginx/conf.d/:/etc/nginx/conf.d/
+  #     - ./services/nginx/www:/var/www
+  #     - ./services/nginx/logs:/var/log/nginx
   #     # Dynmap => SMP
-  #     - ${BASE_DIR}/${SERVER_NAME}/server/${MC_SMP_NAME}/data/dynmap/web/standalone:/var/www/maps/${MC_SMP_NAME}/standalone
-  #     - ${BASE_DIR}/${SERVER_NAME}/server/${MC_SMP_NAME}/data/dynmap/web/tiles:/var/www/maps/${MC_SMP_NAME}/tiles
+  #     - ./server/${MC_SMP_NAME}/data/dynmap/web/standalone:/var/www/maps/${MC_SMP_NAME}/standalone
+  #     - ./server/${MC_SMP_NAME}/data/dynmap/web/tiles:/var/www/maps/${MC_SMP_NAME}/tiles
   #     # Dynmap => Expedition
-  #     - ${BASE_DIR}/${SERVER_NAME}/server/${MC_EXPEDITION_NAME}/data/dynmap/web/standalone:/var/www/maps/${MC_EXPEDITION_NAME}/standalone
-  #     - ${BASE_DIR}/${SERVER_NAME}/server/${MC_EXPEDITION_NAME}/data/dynmap/web/tiles:/var/www/maps/${MC_EXPEDITION_NAME}/tiles
+  #     - ./server/${MC_EXPEDITION_NAME}/data/dynmap/web/standalone:/var/www/maps/${MC_EXPEDITION_NAME}/standalone
+  #     - ./server/${MC_EXPEDITION_NAME}/data/dynmap/web/tiles:/var/www/maps/${MC_EXPEDITION_NAME}/tiles
   #     # Dynmap => Testing
-  #     - ${BASE_DIR}/${SERVER_NAME}/server/${MC_TESTING_NAME}/data/dynmap/web/standalone:/var/www/maps/${MC_TESTING_NAME}/standalone
-  #     - ${BASE_DIR}/${SERVER_NAME}/server/${MC_TESTING_NAME}/data/dynmap/web/tiles:/var/www/maps/${MC_TESTING_NAME}/tiles
+  #     - ./server/${MC_TESTING_NAME}/data/dynmap/web/standalone:/var/www/maps/${MC_TESTING_NAME}/standalone
+  #     - ./server/${MC_TESTING_NAME}/data/dynmap/web/tiles:/var/www/maps/${MC_TESTING_NAME}/tiles
   #   labels:
   #     com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/nginx.svg
   #     com.getarcaneapp.arcane.updater: false
@@ -319,7 +319,7 @@ services:
   #     - ${PHP_PORT:-9000}:9000
   #   volumes:
   #     - /etc/timezone:/etc/timezone:ro
-  #     - ${BASE_DIR}/${SERVER_NAME}/services/nginx/www:/var/www
+  #     - ./services/nginx/www:/var/www
   #   labels:
   #     #com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/nginx.svg
   #     com.getarcaneapp.arcane.updater: false
@@ -338,8 +338,8 @@ services:
   #     MYSQL_PASSWORD: ${DB_PASSWORD}
   #   volumes:
   #     - /etc/localtime:/etc/localtime:ro
-  #     - ${BASE_DIR}/${SERVER_NAME}/.docker/mysql/init:/docker-entrypoint-initdb.d
-  #     - ${BASE_DIR}/${SERVER_NAME}/services/mysql:/var/lib/mysql
+  #     - ./.docker/mysql/init:/docker-entrypoint-initdb.d
+  #     - ./services/mysql:/var/lib/mysql
   #   labels:
   #     #com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/nginx.svg
   #     com.getarcaneapp.arcane.updater: false
@@ -353,7 +353,7 @@ services:
   #     - ${REDIS_PORT}:6379
   #   volumes:
   #     - /etc/localtime:/etc/localtime:ro
-  #     - ${BASE_DIR}/${SERVER_NAME}/services/redis:/var/lib/redis
+  #     - ./services/redis:/var/lib/redis
   #   labels:
   #     com.centurylinklabs.watchtower.enable: "false"
   #     com.centurylinklabs.watchtower.monitor-only: "true"
